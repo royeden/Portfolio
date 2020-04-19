@@ -25,6 +25,12 @@ function Grid({ children, className, width = 800 }: GridProps) {
           flex-wrap: wrap;
           margin-top: 3rem;
         }
+
+        @media (max-width: 600px) {
+          .grid {
+            flex-direction: column;
+          }
+        }
       `}</style>
     </>
   );

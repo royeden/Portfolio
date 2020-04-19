@@ -4,20 +4,16 @@ import Card from './Card';
 
 export type ProjectProps = {
   description: string;
-  id: string;
-  image: string;
-  subtitle?: string;
+  id: number;
   title: string;
-  url: string;
+  html_url: string;
 };
 
 function Project({
   description,
   id,
-  image,
-  subtitle,
   title,
-  url,
+  html_url,
 }: ProjectProps) {
   return (
     <Card
@@ -27,13 +23,19 @@ function Project({
         as: `/projects/${title}`,
       }}
     >
-      <h1 className="tilte">{title}</h1>
-      {subtitle && <h2 className="subtilte">{subtitle}</h2>}
-      <p>{description}</p>
+      <h1 className="title">{title}</h1>
+      <span>{description}</span>
       <style jsx>{`
         :global(.card.project):hover,
         :global(.card.project):focus {
           border-color: black;
+          box-shadow: 0 2px 2px #00000033;
+          word-break: break-all;
+        }
+
+        h1, span {
+          word-break: break-word;
+          overflow: hidden;
         }
       `}</style>
     </Card>

@@ -135,7 +135,6 @@ export default function Layout({ children, page, title }: LayoutType) {
           flex-direction: column;
           min-height: 100vh;
           padding: 6rem 0.75rem 0;
-          position: relative;
         }
 
         .nav {
@@ -149,6 +148,7 @@ export default function Layout({ children, page, title }: LayoutType) {
           position: fixed;
           top: 0;
           width: 100vw;
+          z-index: 10;
         }
 
         .nav > :global(.link) {
