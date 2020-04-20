@@ -14,7 +14,7 @@ type HomeProps = {
 };
 
 export default function Home({ scrapped, error, repos }: HomeProps) {
-  console.log({ repos, scrapped })
+  console.log(scrapped, repos);
   const [current, ...projects] = repos.map(
     ({ id, name, html_url, description }) => ({
       id,
@@ -35,15 +35,21 @@ export async function getStaticProps() {
   try {
     const allRepos = await getGithubRepos('royeden');
 
-    const repos = allRepos
-      .filter(({ archived, fork }) => Boolean(!(archived || fork)))
-      .sort((repo1, repo2) => {
-        return Date.parse(repo2.updated_at) - Date.parse(repo1.updated_at);
-      });
+    const dateSort = (repo1: GithubRepo, repo2: GithubRepo) =>
+      Date.parse(repo2.updated_at) - Date.parse(repo1.updated_at);
 
-    const urls = repos.map(({ homepage }) => homepage || '').filter(Boolean);
+    const filterUnwantedRepos = ({ archived, fork }: GithubRepo) =>
+      Boolean(!(archived || fork));
 
-    const scrapped = await getWebsites(urls);
+    const filterHomepages = (exists: boolean) => ({ homepage }: GithubRepo) =>
+      Boolean(exists ? homepage : !homepage);
+
+    const repos = allRepos.filter(filterUnwantedRepos).sort(dateSort);
+
+    const urls = repos.filter(filterHomepages(true));
+    const reposUrls = repos.filter(filterHomepages(false));
+
+    const scrapped = await getWebsites(urls.map(({ homepage }) => homepage || ''));
 
     return {
       props: {
@@ -55,6 +61,7 @@ export async function getStaticProps() {
   } catch (error) {
     return {
       props: {
+        scrapped: [],
         repos: [],
         error
       }
