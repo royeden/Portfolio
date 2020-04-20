@@ -1,18 +1,38 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import Link, { LinkProps } from 'next/link';
 
 import wrapClassName from '../utils/wrapClassName';
+import ExternalLink from './ExternalLink';
 
 type CardProps = {
   children: ReactNode;
   className?: string;
   link?: LinkProps;
+  href?: string;
 };
 
-function Card({ children, className, link, ...props }: CardProps) {
-  const card = (
-    <a {...props} className={wrapClassName('card', className)}>
-      {children}
+function Card({ children, className, href, link, ...props }: CardProps) {
+  const cardProps = useMemo(
+    () => ({
+      ...props,
+      className: wrapClassName('card', className)
+    }),
+    [className]
+  );
+
+  return (
+    <>
+      {href ? (
+        <ExternalLink {...cardProps} href={href}>
+          {children}
+        </ExternalLink>
+      ) : link ? (
+        <Link {...link}>
+          <a {...cardProps}>{children}</a>
+        </Link>
+      ) : (
+        <a {...cardProps}>{children}</a>
+      )}
       <style jsx>{`
         .card {
           border: 1px solid #eaeaea;
@@ -28,12 +48,12 @@ function Card({ children, className, link, ...props }: CardProps) {
           padding: 1.5rem;
           text-align: left;
           text-decoration: none;
-          transition: color 0.15s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+          transition: color 0.15s ease, border-color 0.4s ease,
+            box-shadow 0.4s ease;
         }
       `}</style>
-    </a>
+    </>
   );
-  return link ? <Link {...link}>{card}</Link> : card;
 }
 
 export default Card;
