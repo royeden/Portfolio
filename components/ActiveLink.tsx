@@ -7,17 +7,23 @@ type ActiveLinkProps = LinkProps & {
   className: string;
 };
 
-function ActiveLink({ children, className, href, ...props }: ActiveLinkProps) {
+function ActiveLink({
+  children,
+  className,
+  href,
+  ...props
+}: ActiveLinkProps): JSX.Element {
   const router = useRouter();
 
   const isActiveLink = useMemo(() => router.pathname === href, [
     href,
-    router.pathname,
+    router.pathname
   ]);
 
   return (
     <Link href={href} {...props}>
       <a
+        href={`${href}`}
         className={`${className}${isActiveLink ? ` ${className}-active` : ''}`}
       >
         {children}

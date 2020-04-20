@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fetch from 'isomorphic-unfetch';
 import { getLinkPreview } from 'link-preview-js';
 
@@ -15,7 +16,7 @@ export type GithubRepo = {
   disabled: boolean;
   created_at: string;
   updated_at: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 type WebsitePartial = {
@@ -87,41 +88,40 @@ export async function getWebsites(
     const responses: WebsitePartial[] | WebsiteComplete[] = await Promise.all(
       urls.map(url => getLinkPreview(url))
     );
-    const JSONSafeResponses = responses
-      .map(response => {
-        function getSafeResponse() {
-          if (isWebsiteComplete(response)) {
-            return {
-              title: response.title || '',
-              siteName: response.siteName || '',
-              description: response.description || '',
-              mediaType: response.mediaType || '',
-              favicons: response.favicons || [],
-              ...response
-            };
-          } else {
-            return {
-              ...response,
-              title: '',
-              siteName: '',
-              description: '',
-              images: [],
-              videos: [],
-              favicons: response.favicons || []
-            };
-          }
+    const JSONSafeResponses = responses.map(response => {
+      function getSafeResponse(): JSONSafeWebsite {
+        if (isWebsiteComplete(response)) {
+          return {
+            title: response.title || '',
+            siteName: response.siteName || '',
+            description: response.description || '',
+            mediaType: response.mediaType || '',
+            favicons: response.favicons || [],
+            ...response
+          };
+        } else {
+          return {
+            ...response,
+            title: '',
+            siteName: '',
+            description: '',
+            images: [],
+            videos: [],
+            favicons: response.favicons || []
+          };
         }
-        const safeResponse = getSafeResponse();
+      }
+      const safeResponse = getSafeResponse();
 
-        return {
-          ...safeResponse,
-          title: safeResponse.title || '',
-          siteName: safeResponse.siteName || '',
-          description: safeResponse.description || '',
-          mediaType: safeResponse.mediaType || '',
-          favicons: safeResponse.favicons || []
-        }
-      });
+      return {
+        ...safeResponse,
+        title: safeResponse.title || '',
+        siteName: safeResponse.siteName || '',
+        description: safeResponse.description || '',
+        mediaType: safeResponse.mediaType || '',
+        favicons: safeResponse.favicons || []
+      };
+    });
 
     return JSONSafeResponses;
   } catch (error) {

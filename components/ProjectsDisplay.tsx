@@ -7,16 +7,19 @@ type ProjectsDisplayProps = {
   projects: ProjectProps[];
 };
 
-function ProjectsDisplay({ current, projects }: ProjectsDisplayProps) {
+function ProjectsDisplay({
+  current,
+  projects
+}: ProjectsDisplayProps): JSX.Element {
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <h1>
-        I'm currently working on this:
-      </h1>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <h1>I'm currently working on this:</h1>
       <Project {...current} />
       <h1>Other stuff that I've made:</h1>
       <Grid>
-        {projects.map(project => <Project key={project.id} {...project} />)}
+        {projects.map(project => (
+          <Project key={project.id} {...project} />
+        ))}
       </Grid>
     </div>
   );

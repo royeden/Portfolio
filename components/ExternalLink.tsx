@@ -13,7 +13,7 @@ function ExternalLink({
   className,
   href,
   ...props
-}: ExternalLinkProps) {
+}: ExternalLinkProps): JSX.Element {
   return (
     <a
       {...props}

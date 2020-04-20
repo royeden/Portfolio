@@ -8,7 +8,7 @@ type GridProps = {
   width?: number;
 };
 
-function Grid({ children, className, width = 800 }: GridProps) {
+function Grid({ children, className, width = 800 }: GridProps): JSX.Element {
   return (
     <>
       <div

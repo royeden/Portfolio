@@ -1,3 +1,5 @@
+import { GetStaticProps } from 'next';
+
 import Layout from '../components/Layout';
 import ProjectsDisplay from '../components/ProjectsDisplay';
 import {
@@ -13,7 +15,7 @@ type HomeProps = {
   repos: GithubRepo[];
 };
 
-export default function Home({ scrapped, error, repos }: HomeProps) {
+function Home({ scrapped, error, repos }: HomeProps): JSX.Element {
   console.log(scrapped, repos);
   const [current, ...projects] = repos.map(
     ({ id, name, html_url, description }) => ({
@@ -31,25 +33,28 @@ export default function Home({ scrapped, error, repos }: HomeProps) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const allRepos = await getGithubRepos('royeden');
 
-    const dateSort = (repo1: GithubRepo, repo2: GithubRepo) =>
+    const dateSort = (repo1: GithubRepo, repo2: GithubRepo): number =>
       Date.parse(repo2.updated_at) - Date.parse(repo1.updated_at);
 
-    const filterUnwantedRepos = ({ archived, fork }: GithubRepo) =>
+    const filterUnwantedRepos = ({ archived, fork }: GithubRepo): boolean =>
       Boolean(!(archived || fork));
 
-    const filterHomepages = (exists: boolean) => ({ homepage }: GithubRepo) =>
-      Boolean(exists ? homepage : !homepage);
+    const filterHomepages = (exists: boolean) => ({
+      homepage
+    }: GithubRepo): boolean => Boolean(exists ? homepage : !homepage);
 
     const repos = allRepos.filter(filterUnwantedRepos).sort(dateSort);
 
     const urls = repos.filter(filterHomepages(true));
     const reposUrls = repos.filter(filterHomepages(false));
 
-    const scrapped = await getWebsites(urls.map(({ homepage }) => homepage || ''));
+    const scrapped = await getWebsites(
+      urls.map(({ homepage }) => homepage || '')
+    );
 
     return {
       props: {
@@ -67,7 +72,7 @@ export async function getStaticProps() {
       }
     };
   }
-}
+};
 
 // export async function getStaticPaths() {
 //   // Call an external API endpoint to get posts
@@ -81,3 +86,5 @@ export async function getStaticProps() {
 //   // return { paths, fallback: false }
 //   return {};
 // }
+
+export default Home;

@@ -11,13 +11,19 @@ type CardProps = {
   href?: string;
 };
 
-function Card({ children, className, href, link, ...props }: CardProps) {
+function Card({
+  children,
+  className,
+  href,
+  link,
+  ...props
+}: CardProps): JSX.Element {
   const cardProps = useMemo(
     () => ({
       ...props,
       className: wrapClassName('card', className)
     }),
-    [className]
+    [className, props]
   );
 
   return (

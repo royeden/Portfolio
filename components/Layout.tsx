@@ -9,7 +9,7 @@ type LayoutType = {
   title: ReactNode | string;
 };
 
-export default function Layout({ children, page, title }: LayoutType) {
+function Layout({ children, page, title }: LayoutType): JSX.Element {
   return (
     <>
       <div className="container">
@@ -104,7 +104,11 @@ export default function Layout({ children, page, title }: LayoutType) {
         </main>
         <footer>
           <p>
-            Made with ❤️ by{' '}
+            Made with{' '}
+            <span aria-label="love" role="img">
+              ❤️
+            </span>{' '}
+            by{' '}
             <ExternalLink href="https://github.com/royeden">
               Roy Eden
             </ExternalLink>
@@ -210,3 +214,5 @@ export default function Layout({ children, page, title }: LayoutType) {
     </>
   );
 }
+
+export default Layout;

@@ -13,14 +13,14 @@ function Project({
   description,
   id,
   title,
-  html_url,
-}: ProjectProps) {
+  html_url
+}: ProjectProps): JSX.Element {
   return (
     <Card
       className="project"
       link={{
         href: `/projects/[name]`,
-        as: `/projects/${title}`,
+        as: `/projects/${title}`
       }}
     >
       <h1 className="title">{title}</h1>
@@ -33,7 +33,8 @@ function Project({
           word-break: break-all;
         }
 
-        h1, span {
+        h1,
+        span {
           word-break: break-word;
           overflow: hidden;
         }

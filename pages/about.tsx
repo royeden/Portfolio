@@ -1,9 +1,11 @@
-import Layout from "../components/Layout";
+import Layout from '../components/Layout';
 
-export default function About() {
+function About(): JSX.Element {
   return (
     <Layout page="About" title="About me:">
       About
     </Layout>
-  )
+  );
 }
+
+export default About;
