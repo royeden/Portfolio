@@ -11,7 +11,7 @@ export type GithubRepo = {
   language: string;
   has_pages: boolean;
   archived: boolean;
-  forked: boolean;
+  fork: boolean;
   disabled: boolean;
   created_at: string;
   updated_at: string;

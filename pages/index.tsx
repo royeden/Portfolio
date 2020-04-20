@@ -36,7 +36,7 @@ export async function getStaticProps() {
     const allRepos = await getGithubRepos('royeden');
 
     const repos = allRepos
-      .filter(({ archived, forked }) => Boolean(!(archived || forked)))
+      .filter(({ archived, fork }) => Boolean(!(archived || fork)))
       .sort((repo1, repo2) => {
         return Date.parse(repo2.updated_at) - Date.parse(repo1.updated_at);
       });
