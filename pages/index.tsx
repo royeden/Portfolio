@@ -1,51 +1,28 @@
 import Layout from '../components/Layout';
 import ProjectsDisplay from '../components/ProjectsDisplay';
-import { GithubRepo, getGithubRepos } from '../utils/api';
+import {
+  GithubRepo,
+  JSONSafeWebsite,
+  getGithubRepos,
+  getWebsites
+} from '../utils/api';
 
 type HomeProps = {
   error: boolean;
+  scrapped: JSONSafeWebsite[];
   repos: GithubRepo[];
 };
 
-export default function Home({ error, repos }: HomeProps) {
-  console.log(
-    repos.map(
-      ({
-        id,
-        name,
-        private: isPrivate,
-        html_url,
-        description,
-        homepage,
-        language,
-        has_pages,
-        archived,
-        disabled,
-      }) => ({
-        id,
-        name,
-        isPrivate,
-        html_url,
-        description,
-        homepage,
-        language,
-        has_pages,
-        archived,
-        disabled,
-      })
-    )
+export default function Home({ scrapped, error, repos }: HomeProps) {
+  console.log({ repos, scrapped })
+  const [current, ...projects] = repos.map(
+    ({ id, name, html_url, description }) => ({
+      id,
+      title: name,
+      description,
+      html_url
+    })
   );
-  const [current, ...projects] = repos.map(({
-    id,
-    name,
-    html_url,
-    description
-  }) => ({
-    id,
-    title: name,
-    description,
-    html_url
-  }));
   return (
     <Layout page="Home" title="Welcome to my portfolio!">
       {/* TODO add brief BIO, expand in about */}
@@ -64,18 +41,23 @@ export async function getStaticProps() {
         return Date.parse(repo2.updated_at) - Date.parse(repo1.updated_at);
       });
 
+    const urls = repos.map(({ homepage }) => homepage || '').filter(Boolean);
+
+    const scrapped = await getWebsites(urls);
+
     return {
       props: {
+        scrapped,
         repos,
-        error: false,
-      },
+        error: false
+      }
     };
   } catch (error) {
     return {
       props: {
         repos: [],
-        error,
-      },
+        error
+      }
     };
   }
 }

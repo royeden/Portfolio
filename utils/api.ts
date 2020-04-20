@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch';
+import { getLinkPreview } from 'link-preview-js';
 
 export type GithubRepo = {
   id: number;
@@ -17,6 +18,48 @@ export type GithubRepo = {
   [key: string]: any;
 };
 
+type WebsitePartial = {
+  url: string;
+  mediaType: string;
+  contentType: string;
+  favicons: any[];
+};
+type WebsiteComplete = {
+  url: string;
+  title: any;
+  siteName: any;
+  description: any;
+  mediaType: any;
+  contentType: string;
+  images: string[];
+  videos: {
+    url: any;
+    secureUrl: any;
+    type: any;
+    width: any;
+    height: any;
+  }[];
+  favicons: any[];
+};
+
+export type JSONSafeWebsite = {
+  url: string;
+  title: string;
+  siteName: string;
+  description: string;
+  mediaType: string;
+  contentType: string;
+  images: string[];
+  videos: {
+    url: string;
+    secureUrl: string;
+    type: string;
+    width: number;
+    height: number;
+  }[];
+  favicons: any[];
+};
+
 export async function getGithubRepos(
   user: string
 ): Promise<GithubRepo[] | never> {
@@ -24,6 +67,59 @@ export async function getGithubRepos(
     const response = await fetch(`https://api.github.com/users/${user}/repos`);
     const json = await response.json();
     return json;
+  } catch (error) {
+    throw error;
+  }
+}
+
+function isWebsiteComplete(
+  response: WebsitePartial | WebsiteComplete
+): response is WebsiteComplete {
+  if (response as WebsiteComplete) {
+    return true;
+  } else return false;
+}
+
+export async function getWebsites(
+  urls: string[]
+): Promise<JSONSafeWebsite[] | never> {
+  try {
+    const responses: WebsitePartial[] | WebsiteComplete[] = await Promise.all(
+      urls.map(url => getLinkPreview(url))
+    );
+    const JSONSafeResponses = responses
+      .map(response => {
+        if (isWebsiteComplete(response)) {
+          return {
+            title: response.title || '',
+            siteName: response.siteName || '',
+            description: response.description || '',
+            mediaType: response.mediaType || '',
+            favicons: response.favicons || [],
+            ...response
+          };
+        } else {
+          return {
+            ...response,
+            title: '',
+            siteName: '',
+            description: '',
+            images: [],
+            videos: [],
+            favicons: response.favicons || []
+          };
+        }
+      })
+      .map(response => ({
+        ...response,
+        title: response.title || '',
+        siteName: response.siteName || '',
+        description: response.description || '',
+        mediaType: response.mediaType || '',
+        favicons: response.favicons || []
+      }));
+
+    return JSONSafeResponses;
   } catch (error) {
     throw error;
   }
