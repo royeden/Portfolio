@@ -89,35 +89,39 @@ export async function getWebsites(
     );
     const JSONSafeResponses = responses
       .map(response => {
-        if (isWebsiteComplete(response)) {
-          return {
-            title: response.title || '',
-            siteName: response.siteName || '',
-            description: response.description || '',
-            mediaType: response.mediaType || '',
-            favicons: response.favicons || [],
-            ...response
-          };
-        } else {
-          return {
-            ...response,
-            title: '',
-            siteName: '',
-            description: '',
-            images: [],
-            videos: [],
-            favicons: response.favicons || []
-          };
+        function getSafeResponse() {
+          if (isWebsiteComplete(response)) {
+            return {
+              title: response.title || '',
+              siteName: response.siteName || '',
+              description: response.description || '',
+              mediaType: response.mediaType || '',
+              favicons: response.favicons || [],
+              ...response
+            };
+          } else {
+            return {
+              ...response,
+              title: '',
+              siteName: '',
+              description: '',
+              images: [],
+              videos: [],
+              favicons: response.favicons || []
+            };
+          }
         }
-      })
-      .map(response => ({
-        ...response,
-        title: response.title || '',
-        siteName: response.siteName || '',
-        description: response.description || '',
-        mediaType: response.mediaType || '',
-        favicons: response.favicons || []
-      }));
+        const safeResponse = getSafeResponse();
+
+        return {
+          ...safeResponse,
+          title: safeResponse.title || '',
+          siteName: safeResponse.siteName || '',
+          description: safeResponse.description || '',
+          mediaType: safeResponse.mediaType || '',
+          favicons: safeResponse.favicons || []
+        }
+      });
 
     return JSONSafeResponses;
   } catch (error) {
