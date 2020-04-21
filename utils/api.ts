@@ -61,6 +61,14 @@ export type JSONSafeWebsite = {
   favicons: any[];
 };
 
+function isWebsiteComplete(
+  response: WebsitePartial | WebsiteComplete
+): response is WebsiteComplete {
+  if (response as WebsiteComplete) {
+    return true;
+  } else return false;
+}
+
 export async function getGithubRepos(
   user: string
 ): Promise<GithubRepo[] | never> {
@@ -71,14 +79,6 @@ export async function getGithubRepos(
   } catch (error) {
     throw error;
   }
-}
-
-function isWebsiteComplete(
-  response: WebsitePartial | WebsiteComplete
-): response is WebsiteComplete {
-  if (response as WebsiteComplete) {
-    return true;
-  } else return false;
 }
 
 export async function getWebsites(

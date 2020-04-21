@@ -1,6 +1,7 @@
 import React from 'react';
 import Project, { ProjectProps } from './Project';
 import Grid from './Grid';
+import { isLoading } from './Loading';
 
 type ProjectsDisplayProps = {
   current: ProjectProps;
@@ -17,9 +18,13 @@ function ProjectsDisplay({
       <Project {...current} />
       <h1>Other stuff that I've made:</h1>
       <Grid>
-        {projects.map(project => (
-          <Project key={project.id} {...project} />
-        ))}
+        {projects.map(project =>
+          isLoading(project) ? (
+            <Project loading />
+          ) : (
+            <Project key={project.id} {...project} />
+          )
+        )}
       </Grid>
     </div>
   );

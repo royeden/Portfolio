@@ -1,30 +1,30 @@
 import React from 'react';
 
 import Card from './Card';
+import { LoadingProps, isLoading } from './Loading';
 
-export type ProjectProps = {
-  description: string;
-  id: number;
-  title: string;
-  html_url: string;
-};
+export type ProjectProps =
+  | LoadingProps
+  | {
+      description: string;
+      id: number;
+      title: string;
+      html_url: string;
+    };
 
-function Project({
-  description,
-  id,
-  title,
-  html_url
-}: ProjectProps): JSX.Element {
-  return (
+function Project(props: ProjectProps): JSX.Element {
+  return isLoading(props) ? (
+    <Card {...props} />
+  ) : (
     <Card
       className="project"
       link={{
         href: `/projects/[name]`,
-        as: `/projects/${title}`
+        as: `/projects/${props.title}`
       }}
     >
-      <h1 className="title">{title}</h1>
-      <span>{description}</span>
+      <h1 className="title">{props.title}</h1>
+      <span>{props.description}</span>
       <style jsx>{`
         :global(.card.project):hover,
         :global(.card.project):focus {

@@ -3,21 +3,22 @@ import Link, { LinkProps } from 'next/link';
 
 import wrapClassName from '../utils/wrapClassName';
 import ExternalLink from './ExternalLink';
+import Loading, { LoadingProps, isLoading } from './Loading';
 
-type CardProps = {
+type CardBodyProps = {
   children: ReactNode;
   className?: string;
   link?: LinkProps;
   href?: string;
 };
 
-function Card({
+function CardBody({
   children,
   className,
   href,
   link,
   ...props
-}: CardProps): JSX.Element {
+}: CardBodyProps): JSX.Element {
   const cardProps = useMemo(
     () => ({
       ...props,
@@ -37,7 +38,7 @@ function Card({
           <a {...cardProps}>{children}</a>
         </Link>
       ) : (
-        <a {...cardProps}>{children}</a>
+        <div {...cardProps}>{children}</div>
       )}
       <style jsx>{`
         .card {
@@ -59,6 +60,25 @@ function Card({
         }
       `}</style>
     </>
+  );
+}
+
+type CardProps = LoadingProps | CardBodyProps;
+
+function Card(props: CardProps): JSX.Element {
+  return isLoading(props) ? (
+    <CardBody className="loading">
+      <Loading />
+      <style jsx>
+        {`
+          :global(.card.loading) {
+            align-items: center;
+          }
+        `}
+      </style>
+    </CardBody>
+  ) : (
+    <CardBody {...props} />
   );
 }
 
