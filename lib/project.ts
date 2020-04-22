@@ -59,14 +59,14 @@ export function getAllProjectIds(): InternalProjectRoute[] {
   });
 }
 
-type InternalProjectData = {
+type MarkdownFile = {
   id: string;
   contentHtml: string;
-} & MatterResult;
+};
 
-export async function getProjectData(
-  id: string
-): Promise<InternalProjectData[]> {
+export type InternalProjectData = MarkdownFile & MatterResult;
+
+export async function getProjectData(id: string): Promise<InternalProjectData> {
   const fullPath = path.join(projectsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 

@@ -4,7 +4,7 @@ import { AppProps } from 'next/app';
 
 import { GithubRepo } from '../utils/api';
 
-export type AppComponentProps = {
+export type AppPageProps = {
   error: undefined | Error;
   githubRepos: undefined | GithubRepo[];
   loading: boolean;
@@ -21,9 +21,9 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
 
   return (
     <Component
-      error={error}
-      githubRepos={data}
-      loading={!data}
+      // error={error}
+      // githubRepos={data}
+      // loading={!data}
       {...pageProps}
     />
   );
