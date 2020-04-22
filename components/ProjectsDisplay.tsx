@@ -18,9 +18,9 @@ function ProjectsDisplay({
       <Project {...current} />
       <h1>Other stuff that I've made:</h1>
       <Grid>
-        {projects.map(project =>
+        {projects.map((project, index) =>
           isLoading(project) ? (
-            <Project loading />
+            <Project key={`${index}`} loading />
           ) : (
             <Project key={project.id} {...project} />
           )

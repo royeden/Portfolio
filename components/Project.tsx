@@ -19,7 +19,7 @@ function Project(props: ProjectProps): JSX.Element {
     <Card
       className="project"
       link={{
-        href: `/projects/[name]`,
+        href: `/projects/[id]`,
         as: `/projects/${props.title}`
       }}
     >
