@@ -1,29 +1,20 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Layout from '../../components/Layout';
-import { AppPageProps } from '../_app';
 import {
   InternalProjectData,
   getAllProjectIds,
   getProjectData
 } from '../../lib/project';
 
-type ProjectPage = AppPageProps & {
+type ProjectPage = {
   projectData: InternalProjectData;
 };
 
-function ProjectPage(props: ProjectPage): JSX.Element {
+function ProjectPage({ projectData }: ProjectPage): JSX.Element {
   return (
-    <Layout
-      page={props.projectData && props.projectData.name}
-      title={props.projectData && props.projectData.name}
-    >
-      test
-      {props.projectData && props.projectData.contentHtml && (
-        <div
-          dangerouslySetInnerHTML={{ __html: props.projectData.contentHtml }}
-        />
-      )}
+    <Layout page={projectData.name} title={projectData.name}>
+      <div dangerouslySetInnerHTML={{ __html: projectData.contentHtml }} />s
     </Layout>
   );
 }
@@ -38,11 +29,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
+type ProjectParams = {
+  id: string;
+};
+
+function getParamsId(
+  params:
+    | ProjectParams
+    | {
+        [key: string]: unknown;
+      }
+    | undefined
+): string {
+  return (params as ProjectParams).id || '';
+}
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const projecData = await getProjectData(params.id as string);
+  const projectData = await getProjectData(getParamsId(params));
   return {
     props: {
-      projecData
+      projectData
     }
   };
 };
