@@ -1,8 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import remark from 'remark';
-import html from 'remark-html';
+import merge from 'deepmerge';
+import githubSchema from 'hast-util-sanitize/lib/github.json';
+import unified from 'unified';
+import markdown from 'remark-parse';
+import remark2rehype from 'remark-rehype';
+import slug from 'rehype-slug';
+import link from 'rehype-autolink-headings';
+import html from 'rehype-stringify';
+import sanitize from 'rehype-sanitize';
 
 type MatterResult = {
   github: string;
@@ -73,10 +80,30 @@ export async function getProjectData(id: string): Promise<InternalProjectData> {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
+  // Use unified to convert markdown into HTML string
+  const processedContent = await unified()
+    .use(markdown)
+    .use(remark2rehype)
+    .use(slug)
+    .use(link, {
+      behavior: 'wrap',
+      properties: {
+        'data-link': true
+      }
+    })
     .use(html)
+    .use(
+      sanitize,
+      merge(githubSchema, {
+        attributes: {
+          a: ['href', 'data-link']
+        }
+      })
+    )
     .process(matterResult.content);
+
+  console.debug(processedContent);
+
   const contentHtml = processedContent.toString();
 
   // Combine the data with the id and contentHtml
