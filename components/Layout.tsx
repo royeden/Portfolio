@@ -17,8 +17,11 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           <ActiveLink className="link" href="/">
             Home
           </ActiveLink>
-          <ActiveLink className="link" href="/about">
-            About
+          <ActiveLink className="link" href="/projects">
+            Projects
+          </ActiveLink>
+          <ActiveLink className="link" href="/blog">
+            Blogs
           </ActiveLink>
         </nav>
         <Head>
@@ -131,12 +134,14 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
         .appear {
           animation: appear 0.4s ease;
           flex: 1;
+          max-width: 100vw;
         }
 
         .container {
           align-items: center;
           display: flex;
           flex-direction: column;
+          max-width: 100vw;
           min-height: 100vh;
           padding: 6rem 0.75rem 0;
         }
@@ -198,6 +203,11 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
         }
 
         @media (max-width: 600px) {
+          .nav > :global(.link) {
+            font-size: 1rem;
+            margin: 0;
+          }
+
           .title {
             text-align: left;
             font-size: 3rem;
