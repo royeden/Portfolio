@@ -13,6 +13,7 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
   return (
     <>
       <div className="container">
+        <img className="wave" src="/wave-top.svg" alt="wave" />
         <nav className="nav">
           <ActiveLink className="link" href="/">
             Home
@@ -105,6 +106,7 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           <h1 className="title">{title}</h1>
           {children}
         </main>
+        <img className="wave" src="/wave-bottom.svg" alt="wave" />
         <footer>
           <p>
             Made with{' '}
@@ -134,7 +136,8 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
         .appear {
           animation: appear 0.4s ease;
           flex: 1;
-          max-width: 100vw;
+          padding: 1rem 0.75rem;
+          margin-bottom: 2rem;
         }
 
         .container {
@@ -143,7 +146,7 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           flex-direction: column;
           max-width: 100vw;
           min-height: 100vh;
-          padding: 6rem 0.75rem 0;
+          padding-top: 4rem;
         }
 
         .nav {
@@ -191,14 +194,19 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           text-align: center;
         }
 
+        .wave {
+          height: 4rem;
+          width: 100%;
+        }
+
         footer {
           align-items: center;
-          border-top: 1px solid #eaeaea;
+          background-color: #000;
+          color: #fff;
           display: flex;
           flex-direction: column;
           height: 100px;
           justify-content: center;
-          margin-top: 2rem;
           width: 100%;
         }
 
