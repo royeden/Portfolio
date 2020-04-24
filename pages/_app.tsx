@@ -21,9 +21,9 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
 
   return (
     <Component
-      // error={error}
-      // githubRepos={data}
-      // loading={!data}
+      error={error}
+      githubRepos={data}
+      loading={!data}
       {...pageProps}
     />
   );

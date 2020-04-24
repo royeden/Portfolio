@@ -196,6 +196,13 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           margin-top: 2rem;
           width: 100%;
         }
+
+        @media (max-width: 600px) {
+          .title {
+            text-align: left;
+            font-size: 3rem;
+          }
+        }
       `}</style>
       <style jsx global>{`
         html,

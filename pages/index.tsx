@@ -5,11 +5,10 @@ import Layout from '../components/Layout';
 import ProjectsDisplay from '../components/ProjectsDisplay';
 import { GithubRepo } from '../utils/api';
 import { InternalProject, getAllProjects } from '../lib/project';
+import { AppPageProps } from './_app';
 
-type HomeProps = {
+type HomeProps = AppPageProps & {
   internalProjects: InternalProject[];
-  githubRepos: GithubRepo[];
-  loading: boolean;
 };
 
 export type MergedProject = {
@@ -21,13 +20,11 @@ function repoId(repo: GithubRepo | undefined): number | undefined {
   return (repo as GithubRepo).id || undefined;
 }
 
-function Home(
-  {
-    // internalProjects,
-    // loading,
-    // githubRepos
-  } /*: HomeProps*/
-): JSX.Element {
+function Home({
+  internalProjects,
+  loading,
+  githubRepos
+}: HomeProps): JSX.Element {
   // const mergedProjects: MergedProject[] = useMemo(
   //   () =>
   //     Boolean(
@@ -60,13 +57,13 @@ function Home(
   );
 }
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const internalProjects = getAllProjects();
-//   return {
-//     props: {
-//       internalProjects
-//     }
-//   };
-// };
+export const getStaticProps: GetStaticProps = async () => {
+  const internalProjects = getAllProjects();
+  return {
+    props: {
+      internalProjects
+    }
+  };
+};
 
 export default Home;

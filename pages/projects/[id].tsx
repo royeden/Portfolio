@@ -1,19 +1,20 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Layout from '../../components/Layout';
+import { AppPageProps } from '../_app';
 import {
   InternalProjectData,
   getAllProjectIds,
   getProjectData
 } from '../../lib/project';
 
-type ProjectPage = {
+type ProjectPage = AppPageProps & {
   projectData: InternalProjectData;
 };
 
 function ProjectPage({ projectData }: ProjectPage): JSX.Element {
   return (
-    <Layout page={projectData.name} title={projectData.name}>
+    <Layout page={`Projects: ${projectData.name}`} title={projectData.name}>
       <div dangerouslySetInnerHTML={{ __html: projectData.contentHtml }} />
     </Layout>
   );
