@@ -14,7 +14,7 @@ type ProjectPage = {
 function ProjectPage({ projectData }: ProjectPage): JSX.Element {
   return (
     <Layout page={projectData.name} title={projectData.name}>
-      <div dangerouslySetInnerHTML={{ __html: projectData.contentHtml }} />s
+      <div dangerouslySetInnerHTML={{ __html: projectData.contentHtml }} />
     </Layout>
   );
 }
