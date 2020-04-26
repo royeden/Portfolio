@@ -14,7 +14,7 @@ type ProjectPage = AppPageProps & {
 
 function ProjectPage({ projectData }: ProjectPage): JSX.Element {
   return (
-    <Layout page={`Projects: ${projectData.name}`} title={projectData.name}>
+    <Layout page={`Projects: ${projectData.title}`} title={projectData.title}>
       <div
         className="markdown"
         dangerouslySetInnerHTML={{ __html: projectData.contentHtml }}

@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import ActiveLink from './ActiveLink';
 import ExternalLink from './ExternalLink';
+import Wave from './Wave';
 
 type LayoutType = {
   children: ReactNode;
@@ -12,21 +13,21 @@ type LayoutType = {
 function Layout({ children, page, title }: LayoutType): JSX.Element {
   return (
     <>
-      <div className="container">
-        <img className="wave" src="/wave-top.svg" alt="wave" />
-        <nav className="nav">
-          <ActiveLink className="link" href="/">
+      <div className="page">
+        <Wave height="4rem" width="100%" type="top" />
+        <nav className="page__nav">
+          <ActiveLink className="page__nav__link" href="/">
             Home
           </ActiveLink>
-          <ActiveLink className="link" href="/projects">
+          <ActiveLink className="page__nav__link" href="/projects">
             Projects
           </ActiveLink>
-          <ActiveLink className="link" href="/blog">
+          <ActiveLink className="page__nav__link" href="/blog">
             Blogs
           </ActiveLink>
         </nav>
         <Head>
-          <title className="title">Roy Eden - {page}</title>
+          <title>Roy Eden - {page}</title>
           <link
             rel="apple-touch-icon"
             sizes="57x57"
@@ -102,12 +103,12 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           <meta name="theme-color" content="#ffffff"></meta>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className="appear">
-          <h1 className="title">{title}</h1>
+        <main className="page__main">
+          <h1 className="page__main__title">{title}</h1>
           {children}
         </main>
-        <img className="wave" src="/wave-bottom.svg" alt="wave" />
-        <footer>
+        <Wave height="4rem" width="100%" type="bottom" />
+        <footer className="page__footer">
           <p>
             Made with{' '}
             <span aria-label="love" role="img">
@@ -133,23 +134,24 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           }
         }
 
-        .appear {
+        .page__main {
           animation: appear 0.4s ease;
           flex: 1;
-          padding: 1rem 0.75rem;
           margin-bottom: 2rem;
+          padding: 1rem 0.75rem;
         }
 
-        .container {
+        .page {
           align-items: center;
           display: flex;
           flex-direction: column;
-          max-width: 100vw;
           min-height: 100vh;
           padding-top: 4rem;
+          max-width: 100%;
+          width: 100vw;
         }
 
-        .nav {
+        .page__nav {
           align-items: center;
           background-color: #000000;
           box-shadow: 0 1px 2px 2px #00000044;
@@ -159,11 +161,11 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           padding: 0.75rem 2rem;
           position: fixed;
           top: 0;
-          width: 100vw;
+          width: 100%;
           z-index: 10;
         }
 
-        .nav > :global(.link) {
+        .page__nav > :global(.page__nav__link) {
           border-bottom: 3px solid transparent;
           border-radius: 4px 4px 0px 0px;
           color: white;
@@ -176,17 +178,17 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
             text-decoration 0.4s ease, background-color 0.4s ease;
         }
 
-        .nav > :global(.link:active),
-        .nav > :global(.link:focus),
-        .nav > :global(.link:hover) {
+        .page__nav > :global(.page__nav__link:active),
+        .page__nav > :global(.page__nav__link:focus),
+        .page__nav > :global(.page__nav__link:hover) {
           background-color: #ffffff44;
         }
 
-        .nav > :global(.link-active) {
+        .page__nav > :global(.page__nav__link--active) {
           border-bottom-color: #fff;
         }
 
-        .title {
+        .page__main__title {
           font-size: 4rem;
           line-height: 1.15;
           margin: 0;
@@ -194,12 +196,7 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           text-align: center;
         }
 
-        .wave {
-          height: 4rem;
-          width: 100%;
-        }
-
-        footer {
+        .page__footer {
           align-items: center;
           background-color: #000;
           color: #fff;
@@ -211,12 +208,12 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
         }
 
         @media (max-width: 600px) {
-          .nav > :global(.link) {
+          .page__nav > :global(.page__nav__link) {
             font-size: 1rem;
             margin: 0;
           }
 
-          .title {
+          .page__main__title {
             text-align: left;
             font-size: 3rem;
           }

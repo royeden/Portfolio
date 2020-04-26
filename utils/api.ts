@@ -2,22 +2,7 @@
 import fetch from 'isomorphic-unfetch';
 import { getLinkPreview } from 'link-preview-js';
 
-export type GithubRepo = {
-  id: number;
-  name: string;
-  private: boolean;
-  html_url: string;
-  description: string;
-  homepage?: string;
-  language: string;
-  has_pages: boolean;
-  archived: boolean;
-  fork: boolean;
-  disabled: boolean;
-  created_at: string;
-  updated_at: string;
-  [key: string]: unknown;
-};
+import { GithubRepo } from './github';
 
 type WebsitePartial = {
   url: string;

@@ -1,9 +1,9 @@
 import React, { ReactNode, useMemo } from 'react';
 import Link, { LinkProps } from 'next/link';
 
-import wrapClassName from '../utils/wrapClassName';
 import ExternalLink from './ExternalLink';
 import Loading, { LoadingProps, isLoading } from './Loading';
+import wrapClassName from '../utils/wrapClassName';
 
 type CardBodyProps = {
   children: ReactNode;
@@ -71,7 +71,7 @@ function Card(props: CardProps): JSX.Element {
       <Loading />
       <style jsx>
         {`
-          :global(.card.loading) {
+          :global(.card__loading) {
             align-items: center;
           }
         `}

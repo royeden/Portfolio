@@ -12,10 +12,11 @@ import html from 'rehype-stringify';
 import sanitize from 'rehype-sanitize';
 
 type MatterResult = {
+  description?: string;
   github: string;
   homepage?: string;
-  name: string;
   tags?: string;
+  title: string;
 };
 
 export type InternalProject = {
@@ -101,8 +102,6 @@ export async function getProjectData(id: string): Promise<InternalProjectData> {
       })
     )
     .process(matterResult.content);
-
-  console.debug(processedContent);
 
   const contentHtml = processedContent.toString();
 

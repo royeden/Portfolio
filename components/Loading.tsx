@@ -27,8 +27,8 @@ function Loading(): JSX.Element {
             box-sizing: border-box;
             display: block;
             position: absolute;
-            width: 64px;
             height: 64px;
+            width: 64px;
             margin: 8px;
             border: 8px solid #000;
             border-radius: 50%;

@@ -23,8 +23,8 @@ function ActiveLink({
   return (
     <Link href={href} {...props}>
       <a
+        className={`${className}${isActiveLink ? ` ${className}--active` : ''}`}
         href={`${href}`}
-        className={`${className}${isActiveLink ? ` ${className}-active` : ''}`}
       >
         {children}
       </a>
