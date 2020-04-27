@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
 import { AppProps } from 'next/app';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import {
   GithubRepo,
@@ -10,6 +10,7 @@ import {
 } from '../utils/github';
 import useDarkMode from '../hooks/useDarkMode';
 import Layout from '../components/Layout';
+import useToggle from '../hooks/useToggle';
 
 export type AppPageProps = {
   error: undefined | Error;
@@ -26,7 +27,13 @@ function fetcher(
 function App({ Component, pageProps }: AppProps): JSX.Element {
   const { data, error } = useSWR('/api/get-repos', fetcher);
 
+  const [initialized, toggleInitialized] = useToggle();
+
   const [darkModeEnabled, toggleDarkModeEnabled] = useDarkMode();
+
+  useEffect(() => {
+    if (!initialized) toggleInitialized();
+  }, [initialized, toggleInitialized]);
 
   const githubRepos = useMemo(() => {
     if (Array.isArray(data)) {
@@ -38,7 +45,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
 
   return (
     <Layout
-      darkModeEnabled={darkModeEnabled}
+      darkModeEnabled={initialized && darkModeEnabled}
       toggleDarkModeEnabled={toggleDarkModeEnabled}
     >
       <Component
