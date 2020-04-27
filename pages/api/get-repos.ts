@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { GithubRepo, getGithubRepos } from '../../utils/api';
+import { GithubRepo } from '../../utils/github';
+import { getGithubRepos } from '../../utils/api';
 
 export default async (
   req: NextApiRequest,
