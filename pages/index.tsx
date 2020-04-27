@@ -2,11 +2,11 @@ import { GetStaticProps } from 'next';
 import { useMemo } from 'react';
 
 import Card from '../components/Card';
-import Layout from '../components/Layout';
 import { GithubRepo } from '../utils/github';
 import { InternalProject, getAllProjects } from '../lib/project';
 
 import { AppPageProps } from './_app';
+import PageHeader from '../components/PageHeader';
 
 type HomeProps = AppPageProps & {
   internalProjects: InternalProject[];
@@ -30,7 +30,8 @@ function Home({
       : false;
   }, [githubRepos, internalProjects, loading]);
   return (
-    <Layout page="Home" title="Hi, welcome!">
+    <>
+      <PageHeader page="Home" title="Hi, welcome!" />
       <section>
         <Card className="bio">
           <img
@@ -155,7 +156,7 @@ function Home({
           justify-content: center;
         }
       `}</style>
-    </Layout>
+    </>
   );
 }
 

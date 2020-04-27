@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 
-import Layout from '../../components/Layout';
+import PageHeader from '../../components/PageHeader';
 import { AppPageProps } from '../_app';
 import {
   InternalProjectData,
@@ -14,7 +14,11 @@ type ProjectPage = AppPageProps & {
 
 function ProjectPage({ projectData }: ProjectPage): JSX.Element {
   return (
-    <Layout page={`Projects: ${projectData.title}`} title={projectData.title}>
+    <>
+      <PageHeader
+        page={`Projects: ${projectData.title}`}
+        title={projectData.title}
+      />
       <div
         className="markdown"
         dangerouslySetInnerHTML={{ __html: projectData.contentHtml }}
@@ -51,7 +55,7 @@ function ProjectPage({ projectData }: ProjectPage): JSX.Element {
           }
         `}
       </style>
-    </Layout>
+    </>
   );
 }
 

@@ -6,11 +6,11 @@ import Wave from './Wave';
 
 type LayoutType = {
   children: ReactNode;
-  page: string;
-  title: ReactNode | string;
+  darkModeEnabled: boolean;
+  toggleDarkModeEnabled: () => void;
 };
 
-function Layout({ children, page, title }: LayoutType): JSX.Element {
+function Layout({ children }: LayoutType): JSX.Element {
   return (
     <>
       <div className="page">
@@ -27,7 +27,6 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           </ActiveLink>
         </nav>
         <Head>
-          <title>Roy Eden - {page}</title>
           <link
             rel="apple-touch-icon"
             sizes="57x57"
@@ -103,10 +102,7 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           <meta name="theme-color" content="#ffffff"></meta>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className="page__main">
-          <h1 className="page__main__title">{title}</h1>
-          {children}
-        </main>
+        <main className="page__main">{children}</main>
         <Wave height="4rem" width="100%" type="bottom" />
         <footer className="page__footer">
           <p>
@@ -186,14 +182,6 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
 
         .page__nav > :global(.page__nav__link--active) {
           border-bottom-color: #fff;
-        }
-
-        .page__main__title {
-          font-size: 4rem;
-          line-height: 1.15;
-          margin: 0;
-          margin-bottom: 2rem;
-          text-align: center;
         }
 
         .page__footer {

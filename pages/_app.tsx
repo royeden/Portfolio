@@ -9,6 +9,7 @@ import {
   sortReposByUpdateDate
 } from '../utils/github';
 import useDarkMode from '../hooks/useDarkMode';
+import Layout from '../components/Layout';
 
 export type AppPageProps = {
   error: undefined | Error;
@@ -27,8 +28,6 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
 
   const [darkModeEnabled, toggleDarkModeEnabled] = useDarkMode();
 
-  console.log(darkModeEnabled);
-
   const githubRepos = useMemo(() => {
     if (Array.isArray(data)) {
       return (data as Array<GithubRepo>)
@@ -38,11 +37,16 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
   }, [data]);
 
   return (
-    <>
+    <Layout
+      darkModeEnabled={darkModeEnabled}
+      toggleDarkModeEnabled={toggleDarkModeEnabled}
+    >
       <Component
         error={error}
-        githubRepos={githubRepos}
+        darkModeEnabled={darkModeEnabled}
+        toggleDarkModeEnabled={toggleDarkModeEnabled}
         loading={!data}
+        githubRepos={githubRepos}
         {...pageProps}
       />
       <style jsx global>{`
@@ -68,7 +72,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           box-sizing: border-box;
         }
       `}</style>
-    </>
+    </Layout>
   );
 }
 

@@ -1,10 +1,11 @@
-import Layout from '../components/Layout';
+import PageHeader from '../components/PageHeader';
 
 function About(): JSX.Element {
   return (
-    <Layout page="Blog" title="Blog">
+    <>
+      <PageHeader page="Blog" title="Blog" />
       Blog
-    </Layout>
+    </>
   );
 }
 
