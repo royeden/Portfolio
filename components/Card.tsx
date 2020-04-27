@@ -41,11 +41,20 @@ function CardBody({
         <div {...cardProps}>{children}</div>
       )}
       <style jsx>{`
+        .card:focus {
+          ${href || link ? 'background-color: var(--card-focus)' : ''};
+        }
+        .card:hover {
+          ${href || link ? 'background-color: var(--card-hover)' : ''};
+        }
+      `}</style>
+      <style jsx>{`
         .card {
+          background-color: var(--card-background);
           border: 1px solid #eaeaea;
           border-radius: 10px;
           box-shadow: 0 1px 1px #00000033;
-          color: inherit;
+          color: var(--color);
           display: flex;
           flex-direction: column;
           flex-basis: 45%;
@@ -55,8 +64,8 @@ function CardBody({
           padding: 1.5rem;
           text-align: left;
           text-decoration: none;
-          transition: color 0.15s ease, border-color 0.4s ease,
-            box-shadow 0.4s ease;
+          transition: background-color 0.4s ease, border-color 0.4s ease,
+            box-shadow 0.4s ease, color 0.15s ease;
         }
       `}</style>
     </>

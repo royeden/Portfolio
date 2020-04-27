@@ -82,14 +82,15 @@ function Layout({
 
         .page__nav {
           align-items: center;
-          background-color: #000000;
-          box-shadow: 0 1px 2px 2px #00000044;
+          background-color: var(--nav);
+          box-shadow: 0 1px 2px 2px var(--nav-shadow);
           display: flex;
           height: 4rem;
           justify-content: center;
           padding: 0.75rem 2rem;
           position: fixed;
           top: 0;
+          transition: background-color 0.4s ease, box-shadow 0.4s ease;
           width: 100%;
           z-index: 3;
         }
@@ -119,12 +120,13 @@ function Layout({
 
         .page__footer {
           align-items: center;
-          background-color: #000000;
+          background-color: var(--nav);
           color: #fff;
           display: flex;
           flex-direction: column;
           height: 100px;
           justify-content: center;
+          transition: background-color 0.4s ease;
           width: 100%;
         }
 

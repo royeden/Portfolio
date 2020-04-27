@@ -58,21 +58,27 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       />
       <style jsx global>{`
         :root {
-          --black: #000000;
-          --dark-mode-background: #121212;
-          --light-mode-background: #eaeaea;
-          --white: #ffffff;
-          --link: #0070f3;
+          --background: ${darkModeEnabled ? '#121212' : '#ffffff'};
+          --card-background: ${darkModeEnabled ? '#1d1d1d' : '#ffffff'};
+          --card-hover: ${darkModeEnabled ? '#1b1b1b' : '#fafafa'};
+          --card-focus: ${darkModeEnabled ? '#292929' : '#ececec'};
+          --color: ${darkModeEnabled ? '#ffffff' : '#000000'};
+          --link: ${darkModeEnabled ? '#0070f3' : '#0070f3'};
+          --nav: ${darkModeEnabled ? '#212121' : '#000000'};
+          --nav-shadow: ${darkModeEnabled ? '#21212144' : '#00000044'};
         }
       `}</style>
       <style jsx global>{`
         html,
         body {
+          background-color: var(--background);
+          color: var(--color);
           padding: 0;
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+          transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         * {
