@@ -162,7 +162,7 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
           position: fixed;
           top: 0;
           width: 100%;
-          z-index: 10;
+          z-index: 3;
         }
 
         .page__nav > :global(.page__nav__link) {
@@ -198,7 +198,7 @@ function Layout({ children, page, title }: LayoutType): JSX.Element {
 
         .page__footer {
           align-items: center;
-          background-color: #000;
+          background-color: #000000;
           color: #fff;
           display: flex;
           flex-direction: column;

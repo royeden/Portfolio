@@ -7,7 +7,12 @@ type WaveProps = {
   width: string | number;
 };
 
-function Wave({ color = '#000', height, type, width }: WaveProps): JSX.Element {
+function Wave({
+  color = '#000000',
+  height,
+  type,
+  width
+}: WaveProps): JSX.Element {
   return (
     <svg
       height={height}
@@ -15,6 +20,7 @@ function Wave({ color = '#000', height, type, width }: WaveProps): JSX.Element {
       width={width}
       viewBox="0 0 1440 320"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ zIndex: 2 }}
     >
       <path
         fill={color}

@@ -47,7 +47,7 @@ function Home({
             </p>
             <ul className="bio__extract__list">
               <li>
-                Sometimes Front-End JavaScript Programmer{' '}
+                Sometimes Front-End Programmer{' '}
                 <span aria-label="laptop" role="img">
                   💻️
                 </span>

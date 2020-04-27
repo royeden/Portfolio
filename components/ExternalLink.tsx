@@ -25,7 +25,7 @@ function ExternalLink({
       {children}
       <style jsx>{`
         .link {
-          color: #0070f3;
+          color: var(--link);
           font-weight: bold;
           text-decoration: none;
         }

@@ -8,6 +8,7 @@ import {
   filterUnwantedRepos,
   sortReposByUpdateDate
 } from '../utils/github';
+import useDarkMode from '../hooks/useDarkMode';
 
 export type AppPageProps = {
   error: undefined | Error;
@@ -23,6 +24,10 @@ function fetcher(
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   const { data, error } = useSWR('/api/get-repos', fetcher);
+
+  const [darkModeEnabled, toggleDarkModeEnabled] = useDarkMode();
+
+  console.log(darkModeEnabled);
 
   const githubRepos = useMemo(() => {
     if (Array.isArray(data)) {
@@ -40,6 +45,15 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         loading={!data}
         {...pageProps}
       />
+      <style jsx global>{`
+        :root {
+          --black: #000000;
+          --dark-mode-background: #121212;
+          --light-mode-background: #eaeaea;
+          --white: #ffffff;
+          --link: #0070f3;
+        }
+      `}</style>
       <style jsx global>{`
         html,
         body {
