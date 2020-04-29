@@ -4,6 +4,7 @@ import ActiveLink from './ActiveLink';
 import ExternalLink from './ExternalLink';
 import HeadData from './HeadData';
 import Wave from './Wave';
+import Blob from './Blob';
 
 type LayoutType = {
   children: ReactNode;
@@ -19,6 +20,7 @@ function Layout({
   return (
     <>
       <div className="page">
+        <Blob order={0} color="#cccccc" />
         <Wave height="4rem" width="100%" type="top" />
         <nav className="page__nav">
           <ActiveLink className="page__nav__link" href="/">
@@ -68,16 +70,20 @@ function Layout({
           flex: 1;
           margin-bottom: 2rem;
           padding: 1rem 0.75rem;
+          z-index: 1;
         }
 
         .page {
           align-items: center;
           display: flex;
           flex-direction: column;
-          min-height: 100vh;
-          padding-top: 4rem;
           max-width: 100%;
+          min-height: 100vh;
+          overflow-x: hidden;
+          padding-top: 4rem;
+          position: relative;
           width: 100vw;
+          z-index: 0;
         }
 
         .page__nav {
@@ -135,25 +141,6 @@ function Layout({
             font-size: 1rem;
             margin: 0;
           }
-
-          .page__main__title {
-            text-align: left;
-            font-size: 3rem;
-          }
-        }
-      `}</style>
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
         }
       `}</style>
     </>

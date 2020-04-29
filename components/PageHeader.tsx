@@ -21,6 +21,12 @@ function PageHeader({ page, title }: PageHeaderProps): JSX.Element {
           margin-bottom: 2rem;
           text-align: center;
         }
+        @media (max-width: 600px) {
+          .title {
+            text-align: left;
+            font-size: 3rem;
+          }
+        }
       `}</style>
     </>
   );
