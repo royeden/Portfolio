@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 
 import ActiveLink from './ActiveLink';
+import Blobs from './Blobs';
 import ExternalLink from './ExternalLink';
 import HeadData from './HeadData';
 import Wave from './Wave';
-import Blob from './Blob';
 
 type LayoutType = {
   children: ReactNode;
@@ -20,7 +20,7 @@ function Layout({
   return (
     <>
       <div className="page">
-        <Blob order={0} color="#cccccc" />
+        <Blobs color={darkModeEnabled ? "#cccccc" : "#bbbbbb"} />
         <Wave height="4rem" width="100%" type="top" />
         <nav className="page__nav">
           <ActiveLink className="page__nav__link" href="/">
@@ -79,7 +79,7 @@ function Layout({
           flex-direction: column;
           max-width: 100%;
           min-height: 100vh;
-          overflow-x: hidden;
+          overflow: hidden;
           padding-top: 4rem;
           position: relative;
           width: 100vw;
@@ -134,6 +134,7 @@ function Layout({
           justify-content: center;
           transition: background-color 0.4s ease;
           width: 100%;
+          z-index: 2;
         }
 
         @media (max-width: 600px) {
