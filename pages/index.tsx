@@ -7,6 +7,7 @@ import { InternalProject, getAllProjects } from '../lib/project';
 
 import { AppPageProps } from './_app';
 import PageHeader from '../components/PageHeader';
+import PageContainer from '../components/PageContainer';
 
 type HomeProps = AppPageProps & {
   internalProjects: InternalProject[];
@@ -30,7 +31,7 @@ function Home({
       : false;
   }, [githubRepos, internalProjects, loading]);
   return (
-    <>
+    <PageContainer>
       <PageHeader page="Home" title="Hi, welcome!" />
       <section>
         <Card className="bio">
@@ -156,7 +157,7 @@ function Home({
           justify-content: center;
         }
       `}</style>
-    </>
+    </PageContainer>
   );
 }
 

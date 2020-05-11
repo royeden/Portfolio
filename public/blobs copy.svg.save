@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
+  <defs>
+    <filter id="goo" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -9" result="cm" />
+      <feBlend/>
+    </filter>
+
+    <radialGradient id="blob3Grad" cx="291.9382" cy="167.4587" r="41.0767" gradientUnits="userSpaceOnUse">
+      <stop offset="1.020408e-002" style="stop-color:#FF9C12"/>
+      <stop offset="0.1922" style="stop-color:#FA9712"/>
+      <stop offset="0.3992" style="stop-color:#ED8A14"/>
+      <stop offset="0.6186" style="stop-color:#D67316"/>
+      <stop offset="0.8449" style="stop-color:#B65419"/>
+      <stop offset="1" style="stop-color:#9C3A1C"/>
+    </radialGradient>
+    <radialGradient id="botBlob" cx="284.5" cy="421.5" r="53.521" gradientTransform="matrix(-2.802637e-002 -0.9996 5.9976 -0.1682 -2235.533 776.7669)" gradientUnits="userSpaceOnUse">
+      <stop offset="1.020408e-002" style="stop-color:#FF9C12"/>
+      <stop offset="0.1922" style="stop-color:#FA9712"/>
+      <stop offset="0.3992" style="stop-color:#ED8A14"/>
+      <stop offset="0.6186" style="stop-color:#D67316"/>
+      <stop offset="0.8449" style="stop-color:#B65419"/>
+      <stop offset="1" style="stop-color:#9C3A1C"/>
+    </radialGradient>
+    <radialGradient id="blob2_2_" cx="294" cy="157" r="23" gradientUnits="userSpaceOnUse">
+      <stop offset="1.020408e-002" style="stop-color:#FF9C12"/>
+      <stop offset="0.1922" style="stop-color:#FA9712"/>
+      <stop offset="0.3992" style="stop-color:#ED8A14"/>
+      <stop offset="0.6186" style="stop-color:#D67316"/>
+      <stop offset="0.8449" style="stop-color:#B65419"/>
+      <stop offset="1" style="stop-color:#9C3A1C"/>
+    </radialGradient>
+    <radialGradient id="blob1_2_" cx="297" cy="167.5" r="37.2156" gradientUnits="userSpaceOnUse">
+      <stop offset="1.020408e-002" style="stop-color:#FF9C12"/>
+      <stop offset="0.1922" style="stop-color:#FA9712"/>
+      <stop offset="0.3992" style="stop-color:#ED8A14"/>
+      <stop offset="0.6186" style="stop-color:#D67316"/>
+      <stop offset="0.8449" style="stop-color:#B65419"/>
+      <stop offset="1" style="stop-color:#9C3A1C"/>
+    </radialGradient>
+    <radialGradient id="blob0_2_" cx="292" cy="171.5" r="56.5354" gradientUnits="userSpaceOnUse">
+      <stop offset="1.020408e-002" style="stop-color:#FF9C12"/>
+      <stop offset="0.1922" style="stop-color:#FA9712"/>
+      <stop offset="0.3992" style="stop-color:#ED8A14"/>
+      <stop offset="0.6186" style="stop-color:#D67316"/>
+      <stop offset="0.8449" style="stop-color:#B65419"/>
+      <stop offset="1" style="stop-color:#9C3A1C"/>
+    </radialGradient>
+    <radialGradient id="blob4_2_" cx="306.5" cy="155" r="14.109" gradientUnits="userSpaceOnUse">
+      <stop offset="1.020408e-002" style="stop-color:#FF9C12"/>
+      <stop offset="0.1922" style="stop-color:#FA9712"/>
+      <stop offset="0.3992" style="stop-color:#ED8A14"/>
+      <stop offset="0.6186" style="stop-color:#D67316"/>
+      <stop offset="0.8449" style="stop-color:#B65419"/>
+      <stop offset="1" style="stop-color:#9C3A1C"/>
+    </radialGradient>
+  </defs>
+
+  <g class="blobGroup" filter="url(#goo)" clip-path="url(#glassMask)">
+	
+  </g></svg>
+

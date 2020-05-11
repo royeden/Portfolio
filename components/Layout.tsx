@@ -1,10 +1,13 @@
 import React, { ReactNode } from 'react';
+import dynamic from 'next/dynamic';
 
 import ActiveLink from './ActiveLink';
-import Blobs from './Blobs';
 import ExternalLink from './ExternalLink';
 import HeadData from './HeadData';
 import Wave from './Wave';
+import LavaBlobs from './LavaBlobs';
+
+const Blobs = dynamic(() => import('./Blobs'));
 
 type LayoutType = {
   children: ReactNode;
@@ -20,7 +23,8 @@ function Layout({
   return (
     <>
       <div className="page">
-        <Blobs color={darkModeEnabled ? "#cccccc" : "#bbbbbb"} />
+        {/* <LavaBlobs /> */}
+        {/* <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} /> */}
         <Wave height="4rem" width="100%" type="top" />
         <nav className="page__nav">
           <ActiveLink className="page__nav__link" href="/">
@@ -54,19 +58,7 @@ function Layout({
         </footer>
       </div>
       <style jsx>{`
-        @keyframes appear {
-          from {
-            opacity: 0;
-            transform: translateY(5%);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
         .page__main {
-          animation: appear 0.4s ease;
           flex: 1;
           margin-bottom: 2rem;
           padding: 1rem 0.75rem;
@@ -130,7 +122,7 @@ function Layout({
           color: #fff;
           display: flex;
           flex-direction: column;
-          height: 100px;
+          height: 6rem;
           justify-content: center;
           transition: background-color 0.4s ease;
           width: 100%;
