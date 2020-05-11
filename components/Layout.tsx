@@ -6,6 +6,7 @@ import ExternalLink from './ExternalLink';
 import HeadData from './HeadData';
 import Wave from './Wave';
 import LavaBlobs from './LavaBlobs';
+import LavaBlob from './LavaBlob';
 
 const Blobs = dynamic(() => import('./Blobs'));
 
@@ -23,6 +24,7 @@ function Layout({
   return (
     <>
       <div className="page">
+        <LavaBlob />
         {/* <LavaBlobs /> */}
         {/* <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} /> */}
         <Wave height="4rem" width="100%" type="top" />
