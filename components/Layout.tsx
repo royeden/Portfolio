@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 
-import ActiveLink from './ActiveLink';
 import Blobs from './Blobs';
 import ExternalLink from './ExternalLink';
 import HeadData from './HeadData';
@@ -20,20 +19,18 @@ function Layout({
   return (
     <>
       <div className="page">
-        <Blobs color={darkModeEnabled ? "#cccccc" : "#bbbbbb"} />
+        <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} />
         <Wave height="4rem" width="100%" type="top" />
         <nav className="page__nav">
-          <ActiveLink className="page__nav__link" href="/">
-            Home
-          </ActiveLink>
-          <ActiveLink className="page__nav__link" href="/projects">
-            Projects
-          </ActiveLink>
-          <ActiveLink className="page__nav__link" href="/blog">
-            Blogs
-          </ActiveLink>
-          <button onClick={toggleDarkModeEnabled}>
-            Test {darkModeEnabled ? 'dark' : 'light'}
+          <button
+            aria-label={`Toggle ${darkModeEnabled ? 'Light' : 'Dark'} mode`}
+            className="page__nav__toggle-dark-mode-button"
+            onClick={toggleDarkModeEnabled}
+          >
+            <img
+              src={`/${darkModeEnabled ? 'dark' : 'light'}_mode.svg`}
+              alt={`${darkModeEnabled ? 'Light' : 'Dark'} mode enabled`}
+            />
           </button>
         </nav>
         <HeadData />
@@ -92,13 +89,29 @@ function Layout({
           box-shadow: 0 1px 2px 2px var(--nav-shadow);
           display: flex;
           height: 4rem;
-          justify-content: center;
+          /* justify-content: center; */
+          justify-content: flex-end;
           padding: 0.75rem 2rem;
           position: fixed;
           top: 0;
           transition: background-color 0.4s ease, box-shadow 0.4s ease;
           width: 100%;
           z-index: 3;
+        }
+
+        .page__nav__toggle-dark-mode-button {
+          appearance: none;
+          background-color: transparent;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          padding: 0.75rem;
+          transition: background-color 0.4s ease;
+        }
+
+        .page__nav__toggle-dark-mode-button:focus,
+        .page__nav__toggle-dark-mode-button:hover {
+          background-color: var(--background-hover);
         }
 
         .page__nav > :global(.page__nav__link) {
