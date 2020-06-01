@@ -60,12 +60,6 @@ function Home({ loading, githubRepos }: AppPageProps): JSX.Element {
                   📎️
                 </span>
               </li>
-              {/* <li>
-                Always using They / Them pronouns{' '}
-                <span aria-label="rainbow" role="img">
-                  🌈️
-                </span>
-              </li> */}
             </ul>
           </div>
         </Card>
@@ -85,7 +79,7 @@ function Home({ loading, githubRepos }: AppPageProps): JSX.Element {
               aria-label={`View the Github page last project that I've been working on: ${currentProject.name}`}
               href={currentProject.html_url}
             >
-              <h1>{currentProject.name}</h1>
+              <h1>{currentProject.name.toUpperCase()}</h1>
               {currentProject.description && (
                 <p>{currentProject.description}</p>
               )}
