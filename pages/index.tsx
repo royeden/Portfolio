@@ -1,35 +1,18 @@
-import { GetStaticProps } from 'next';
 import { useMemo } from 'react';
 
 import Card from '../components/Card';
+import ExternalLink from '../components/ExternalLink';
+import PageContainer from '../components/PageContainer';
+import PageHeader from '../components/PageHeader';
 import { GithubRepo } from '../utils/github';
-import { InternalProject, getAllProjects } from '../lib/project';
 
 import { AppPageProps } from './_app';
-import PageHeader from '../components/PageHeader';
-import PageContainer from '../components/PageContainer';
 
-type HomeProps = AppPageProps & {
-  internalProjects: InternalProject[];
-};
-
-export type MergedProject = {
-  project: InternalProject;
-  github: GithubRepo | undefined;
-};
-
-function Home({
-  internalProjects,
-  loading,
-  githubRepos
-}: HomeProps): JSX.Element {
-  const currentProject: InternalProject | false | undefined = useMemo(() => {
-    return !loading && githubRepos?.length
-      ? internalProjects.find(({ github }) =>
-          githubRepos.find(({ html_url: githubUrl }) => githubUrl === github)
-        )
-      : false;
-  }, [githubRepos, internalProjects, loading]);
+function Home({ loading, githubRepos }: AppPageProps): JSX.Element {
+  const currentProject: GithubRepo | false | undefined = useMemo(
+    () => Boolean(githubRepos?.length) && (githubRepos as GithubRepo[])[0],
+    [githubRepos]
+  );
   return (
     <PageContainer>
       <PageHeader page="Home" title="Hi, welcome!" />
@@ -78,15 +61,14 @@ function Home({
                   📎️
                 </span>
               </li>
-              {/* <li>
-                Always using They / Them pronouns{' '}
-                <span aria-label="rainbow" role="img">
-                  🌈️
-                </span>
-              </li> */}
             </ul>
           </div>
         </Card>
+      </section>
+      <section>
+        <p>
+          <i>This site is still under construction</i>
+        </p>
       </section>
       <section className="current">
         <header>
@@ -95,17 +77,39 @@ function Home({
             <Card loading />
           ) : currentProject ? (
             <Card
-              link={{
-                href: 'projects/[id]',
-                as: `projects/${currentProject.id}`
-              }}
+              aria-label={`View the Github page last project that I've been working on: ${currentProject.name}`}
+              href={currentProject.html_url}
             >
-              <h1>{currentProject.title}</h1>
-              <p>{currentProject.description}</p>
+              <h1>{currentProject.name.toUpperCase()}</h1>
+              {currentProject.description && (
+                <p>{currentProject.description}</p>
+              )}
+              <p style={{ textAlign: 'center' }}>
+                Check it out by clicking here
+                <span aria-label="This element" role="img">
+                  ☝️
+                </span>
+              </p>
             </Card>
           ) : (
-            ''
+            <Card>
+              <h1 style={{ textAlign: 'center' }}>
+                This couldn't load, I'm sorry!{' '}
+                <span aria-label="Surprised face" role="img">
+                  😮️
+                </span>
+              </h1>
+            </Card>
           )}
+          <p>
+            For now I don't have a showcase, but you can check my github to{' '}
+            <ExternalLink
+              aria-label="View my projects in Github"
+              href="https://github.com/royeden"
+            >
+              view all my projects
+            </ExternalLink>
+          </p>
         </header>
       </section>
       <style jsx>{`
@@ -123,7 +127,7 @@ function Home({
 
         .bio__extract {
           display: inline;
-          font-weight: bold;
+          font-weight: 500;
         }
 
         .bio__extract__list {
@@ -160,14 +164,5 @@ function Home({
     </PageContainer>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const internalProjects = getAllProjects();
-  return {
-    props: {
-      internalProjects
-    }
-  };
-};
 
 export default Home;

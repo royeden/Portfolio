@@ -3,14 +3,14 @@ import useSWR from 'swr';
 import { AppProps } from 'next/app';
 import { useEffect, useMemo } from 'react';
 
+import Layout from '../components/Layout';
+import useDarkMode from '../hooks/useDarkMode';
+import useToggle from '../hooks/useToggle';
 import {
   GithubRepo,
   filterUnwantedRepos,
   sortReposByUpdateDate
 } from '../utils/github';
-import useDarkMode from '../hooks/useDarkMode';
-import Layout from '../components/Layout';
-import useToggle from '../hooks/useToggle';
 
 export type AppPageProps = {
   error: undefined | Error;
@@ -56,16 +56,24 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         githubRepos={githubRepos}
         {...pageProps}
       />
+
       <style jsx global>{`
         :root {
           --background: ${darkModeEnabled ? '#121212' : '#ffffff'};
+          --background-hover: ${darkModeEnabled ? '#ffffff33' : '#ffffff55'};
           --card-background: ${darkModeEnabled ? '#1d1d1d' : '#ffffff'};
-          --card-hover: ${darkModeEnabled ? '#1b1b1b' : '#fafafa'};
-          --card-focus: ${darkModeEnabled ? '#292929' : '#ececec'};
+          --card-border: ${darkModeEnabled ? '#444444' : '#eeeeee'};
+          --card-hover: ${darkModeEnabled ? '#292929' : '#fcfcfc'};
+          --card-focus: ${darkModeEnabled ? '#292929' : '#fcfcfc'};
           --color: ${darkModeEnabled ? '#ffffff' : '#000000'};
-          --link: ${darkModeEnabled ? '#0070f3' : '#0070f3'};
+          --link: ${darkModeEnabled ? '#0CBABA' : '#0070f3'};
           --nav: ${darkModeEnabled ? '#212121' : '#000000'};
           --nav-shadow: ${darkModeEnabled ? '#21212144' : '#00000044'};
+        }
+        /* TODO change this */
+        h1,
+        p {
+          ${darkModeEnabled ? 'text-shadow: 1px 1px 3px #00000099;' : ''}
         }
       `}</style>
       <style jsx global>{`

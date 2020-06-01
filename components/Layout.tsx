@@ -27,6 +27,7 @@ function Layout({
         <LavaBlob />
         {/* <LavaBlobs /> */}
         {/* <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} /> */}
+        <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} />
         <Wave height="4rem" width="100%" type="top" />
         <nav className="page__nav">
           <ActiveLink className="page__nav__link" href="/">
@@ -38,8 +39,15 @@ function Layout({
           <ActiveLink className="page__nav__link" href="/blog">
             Blogs
           </ActiveLink>
-          <button onClick={toggleDarkModeEnabled}>
-            Test {darkModeEnabled ? 'dark' : 'light'}
+          <button
+            aria-label={`Toggle ${darkModeEnabled ? 'Light' : 'Dark'} mode`}
+            className="page__nav__toggle-dark-mode-button"
+            onClick={toggleDarkModeEnabled}
+          >
+            <img
+              src={`/${darkModeEnabled ? 'dark' : 'light'}_mode.svg`}
+              alt={`${darkModeEnabled ? 'Light' : 'Dark'} mode enabled`}
+            />
           </button>
         </nav>
         <HeadData />
@@ -95,6 +103,26 @@ function Layout({
           z-index: 3;
         }
 
+        .page__nav__toggle-dark-mode-button {
+          align-items: center;
+          appearance: none;
+          background-color: transparent;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          height: 36px;
+          justify-content: center;
+          padding: 0.75rem;
+          transition: background-color 0.4s ease;
+          width: 36px;
+        }
+
+        .page__nav__toggle-dark-mode-button:focus,
+        .page__nav__toggle-dark-mode-button:hover {
+          background-color: var(--background-hover);
+        }
+
         .page__nav > :global(.page__nav__link) {
           border-bottom: 3px solid transparent;
           border-radius: 4px 4px 0px 0px;
@@ -133,7 +161,7 @@ function Layout({
 
         @media (max-width: 600px) {
           .page__nav > :global(.page__nav__link) {
-            font-size: 1rem;
+            font-size: 0.8rem;
             margin: 0;
           }
         }

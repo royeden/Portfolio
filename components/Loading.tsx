@@ -33,7 +33,7 @@ function Loading(): JSX.Element {
             border: 8px solid var(--color);
             border-radius: 50%;
             animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-            border-color: #000 transparent transparent transparent;
+            border-color: var(--color) transparent transparent transparent;
           }
           .loading div:nth-child(1) {
             animation-delay: -0.45s;

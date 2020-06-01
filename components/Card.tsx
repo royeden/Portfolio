@@ -41,17 +41,10 @@ function CardBody({
         <div {...cardProps}>{children}</div>
       )}
       <style jsx>{`
-        .card:focus {
-          ${href || link ? 'background-color: var(--card-focus)' : ''};
-        }
-        .card:hover {
-          ${href || link ? 'background-color: var(--card-hover)' : ''};
-        }
-      `}</style>
-      <style jsx>{`
-        .card {
+        .card,
+        :global(.link__card) {
           background-color: var(--card-background);
-          border: 1px solid #eaeaea;
+          border: 2px solid var(--card-border);
           border-radius: 10px;
           box-shadow: 0 1px 1px #00000033;
           color: var(--color);
@@ -66,6 +59,20 @@ function CardBody({
           text-decoration: none;
           transition: background-color 0.4s ease, border-color 0.4s ease,
             box-shadow 0.4s ease, color 0.15s ease;
+        }
+        .card:focus,
+        :global(.link__card):focus,
+        .card:hover,
+        :global(.link__card):hover {
+          ${href || link ? 'border-color: var(--link)' : ''};
+        }
+        .card:focus,
+        :global(.link__card):focus {
+          ${href || link ? 'background-color: var(--card-focus)' : ''};
+        }
+        .card:hover,
+        :global(.link__card):hover {
+          ${href || link ? 'background-color: var(--card-hover)' : ''};
         }
       `}</style>
     </>
