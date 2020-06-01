@@ -1,21 +1,21 @@
-import { getAllPostsForHome } from '../lib/api';
+import { getAllProjectsForHome } from '../lib/api';
 
 export default function Index({
-  allPosts,
+  allProjects,
   preview
 }: {
-  allPosts: any;
+  allProjects: any;
   preview: boolean | null;
 }) {
-  console.log(allPosts);
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
+  console.log(allProjects);
+  const heroPost = allProjects[0];
+  const morePosts = allProjects.slice(1);
   return <>TEST</>;
 }
 
 export async function getStaticProps({ preview = null }) {
-  const allPosts = await getAllPostsForHome(preview);
+  const allProjects = await getAllProjectsForHome(preview);
   return {
-    props: { allPosts, preview }
+    props: { allProjects, preview }
   };
 }

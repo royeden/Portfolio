@@ -1,6 +1,6 @@
 import PageContainer from '../components/PageContainer';
 import PageHeader from '../components/PageHeader';
-import { getAllPostsForHome, getAllTags } from '../lib/api';
+import { getAllProjectsForHome, getAllTags } from '../lib/api';
 
 type ProjectsProps = {
   allPosts: any;
@@ -20,8 +20,12 @@ function Projects({ allPosts, preview }: ProjectsProps): JSX.Element {
 export default Projects;
 
 export async function getStaticProps({ preview = null }) {
-  const allPosts = await Promise.all([getAllPostsForHome(preview), getAllTags()]);
+  const allPosts = await Promise.all([
+    // getAllProjectsForHome(preview),
+    getAllTags(false)
+  ]);
+  console.debug(allPosts)
   return {
-    props: { allPosts, preview }
+    props: { allPosts: [], preview }
   };
 }

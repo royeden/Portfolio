@@ -46,6 +46,9 @@ async function fetchAPI(
   });
 
   const json = await res.json();
+
+  console.log(json);
+
   if (json.errors) {
     console.error(json.errors);
     throw new Error('Failed to fetch API');
@@ -69,7 +72,7 @@ export async function getPreviewPostBySlug(slug: string) {
       }
     }
   );
-  return (data?.post?.items || [])[0];
+  return data;
 }
 
 export async function getAllPostsWithSlug() {
@@ -82,14 +85,14 @@ export async function getAllPostsWithSlug() {
       }
     }
   `);
-  return data?.allPosts?.items;
+  return data;
 }
 
-export async function getAllPostsForHome(preview: boolean | null) {
+export async function getAllProjectsForHome(preview: boolean | null) {
   const data = await fetchAPI(
     `
-    query AllPosts($onlyEnabled: Boolean) {
-      allPosts: getProjectList(sort: { field: "date", order: "desc" }, size: 20, onlyEnabled: $onlyEnabled) {
+    query AllProjects($onlyEnabled: Boolean) {
+      allProjectsList: getProjectList(sort: { field: "date", order: "desc" }, size: 20, onlyEnabled: $onlyEnabled) {
         items {
           _id
           slug
@@ -124,29 +127,24 @@ export async function getAllPostsForHome(preview: boolean | null) {
       }
     }
   );
-  return data?.allPosts?.items;
+  return data?.allProjects?.items;
 }
 
 export async function getAllTags(preview: boolean) {
   const data = await fetchAPI(`
-  query Tags {
-    allTags: geGetAllTags(${
-      preview ? '' : 'where: { _status: { eq: "enabled" } },'
-    } onlyEnabled: $onlyEnabled) {
-      tags {
-        name
-        colors {
-          primary {
-            hex
-          }
-          background {
-            hex
-          }
-        }
+  query AllTags($onlyEnabled: Boolean) {
+    allTags: getTagList(onlyEnabled: $onlyEnabled) {
+      items {
+        _id
+        _enabled
+        _status
+        searchSummary
       }
     }
   }
   `);
+  console.debug(data);
+  return data;
 }
 
 export async function getPostAndMorePosts(
