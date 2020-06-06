@@ -73,7 +73,8 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         /* TODO change this */
         h1,
         p {
-          ${darkModeEnabled ? 'text-shadow: 1px 1px 3px #00000099;' : ''}
+          text-shadow: ${darkModeEnabled ? '1px 1px 3px #00000099' : 'none'};
+          transition: text-shadow 0.4s ease;
         }
       `}</style>
       <style jsx global>{`
