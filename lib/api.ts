@@ -8,11 +8,22 @@ export type Color = {
 };
 
 export type Tag = {
+  _id: string;
   name: string;
   colors: {
     primary: Color;
     background: Color;
   };
+};
+
+export type TagListQuery = {
+  getTagList: {
+    items: (Tag & { status: string })[];
+  };
+};
+
+export type TagQuery = {
+  getTag: Tag;
 };
 
 export type Project = {
@@ -32,7 +43,7 @@ export type Project = {
 async function fetchAPI(
   query: string,
   { variables }: { variables?: object } = {}
-): Promise<object | never> {
+): Promise<object | TagListQuery | TagQuery | never> {
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
@@ -54,6 +65,51 @@ async function fetchAPI(
     throw new Error('Failed to fetch API');
   }
   return json.data;
+}
+
+export async function getTagsList(preview: boolean): Promise<Tag[]> {
+  const data: TagListQuery = (await fetchAPI(
+    `
+    query Tags {
+      getTagList(onlyEnabled: ${preview}) {
+        items {
+          _id
+          _status
+          name
+          colors {
+            primary {
+              hex
+            }
+            background {
+              hex
+            }
+          }
+        }
+      }
+    }`
+  )) as TagListQuery;
+  return data.getTagList.items;
+}
+
+export async function getTag(id: string): Promise<Tag> {
+  const data: TagQuery = (await fetchAPI(
+    `
+    query Tag {
+      getTag(_id: ${id}) {
+        name,
+        colors {
+          primary {
+            hex
+          },
+          background {
+            hex
+          }
+        }
+      }
+    }
+    `
+  )) as TagQuery;
+  return data.getTag;
 }
 
 export async function getPreviewPostBySlug(slug: string) {
