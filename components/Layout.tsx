@@ -24,11 +24,11 @@ function Layout({
   return (
     <>
       <div className="page">
-        <LavaBlob />
+        {/* <LavaBlob /> */}
         {/* <LavaBlobs /> */}
         {/* <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} /> */}
-        <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} />
-        <Wave height="4rem" width="100%" type="top" />
+        {/* <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} /> */}
+        {/* <Wave height="4rem" width="100%" type="top" /> */}
         <nav className="page__nav">
           <ActiveLink className="page__nav__link" href="/">
             Home
