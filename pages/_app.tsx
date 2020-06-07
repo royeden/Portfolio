@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
 import { AppProps } from 'next/app';
 import { useEffect, useMemo } from 'react';
