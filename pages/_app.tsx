@@ -2,14 +2,14 @@ import useSWR from 'swr';
 import { AppProps } from 'next/app';
 import { useEffect, useMemo } from 'react';
 
-import Layout from '../components/Layout';
-import useDarkMode from '../hooks/useDarkMode';
-import useToggle from '../hooks/useToggle';
+import Layout from '@components/Layout';
+import useDarkMode from '@hooks/useDarkMode';
+import useToggle from '@hooks/useToggle';
 import {
   GithubRepo,
   filterUnwantedRepos,
   sortReposByUpdateDate
-} from '../utils/github';
+} from '@utils/github';
 
 export type AppPageProps = {
   error: undefined | Error;

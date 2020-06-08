@@ -1,25 +1,31 @@
 module.exports = {
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   extends: [
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "react-app",
-    "plugin:prettier/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings"
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'react-app',
+    'plugin:prettier/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings'
   ],
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ['@typescript-eslint', 'react'],
   rules: {
-    "react/react-in-jsx-scope": "off"
+    'react/react-in-jsx-scope': 'off',
+    'import/no-absolute-path': 'off',
+    'import/no-unresolved': [
+      'error',
+      { ignore: ['@components/*', '@hooks/*', '@utils/*', '@public/*'] }
+    ]
   },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules', '.']
       }
     },
     react: {
-      version: "detect"
+      version: 'detect'
     }
-  },
+  }
 };

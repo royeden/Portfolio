@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
-import Card from '../components/Card';
-import ExternalLink from '../components/ExternalLink';
-import PageHeader from '../components/PageHeader';
-import { GithubRepo } from '../utils/github';
+import Card from '@components/Card';
+import ExternalLink from '@components/ExternalLink';
+import PageHeader from '@components/PageHeader';
+import { GithubRepo } from '@utils/github';
 
 import { AppPageProps } from './_app';
 
