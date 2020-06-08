@@ -1,7 +1,8 @@
+import { useCallback } from 'react';
+
 import useBrowser from './useBrowser';
 import useMedia from './useMedia';
 import useStorage from './useStorage';
-import { useCallback } from 'react';
 
 const tempStorage = {
   getItem(): string | null {
@@ -47,8 +48,9 @@ function useDarkMode(): [boolean, () => void] {
 
   // If enabledState is defined use it, otherwise fallback to prefersDarkMode.
   // This allows user to override OS level setting on our website.
-  const enabled =
-    typeof enabledState !== 'undefined' ? enabledState : prefersDarkMode;
+  const enabled = (typeof enabledState !== 'undefined'
+    ? enabledState
+    : prefersDarkMode) as boolean;
 
   // Return enabled state and setter
   return [enabled, toggleEnabledState];

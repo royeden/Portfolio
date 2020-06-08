@@ -1,12 +1,17 @@
 // Adapted https://usehooks.com/useLocalStorage/
 import { useCallback, useEffect, useState } from 'react';
+
 import useBrowser from './useBrowser';
+
+type StorableValue = boolean | object | string | undefined | null;
+
+type StorableValues = Array<StorableValue> | StorableValue;
 
 function useStorage(
   storage: Storage,
   key: string,
-  initialValue: any
-): [any, (args0: any) => void] {
+  initialValue: StorableValues
+): [StorableValues, (args0: StorableValues) => void] {
   const hasWindowAccess: boolean = useBrowser();
 
   const setInitialState = useCallback(() => {
@@ -29,7 +34,7 @@ function useStorage(
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
   const setValue = useCallback(
-    (value: any): void => {
+    (value: StorableValues): void => {
       try {
         // Allow value to be a function so we have same API as useState
         const valueToStore =

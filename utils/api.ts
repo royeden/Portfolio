@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import fetch from 'isomorphic-unfetch';
 import { getLinkPreview } from 'link-preview-js';
 
 import { GithubRepo } from './github';

@@ -1,16 +1,15 @@
-import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
 import { AppProps } from 'next/app';
 import { useEffect, useMemo } from 'react';
 
-import Layout from '../components/Layout';
-import useDarkMode from '../hooks/useDarkMode';
-import useToggle from '../hooks/useToggle';
+import Layout from '@components/Layout';
+import useDarkMode from '@hooks/useDarkMode';
+import useToggle from '@hooks/useToggle';
 import {
   GithubRepo,
   filterUnwantedRepos,
   sortReposByUpdateDate
-} from '../utils/github';
+} from '@utils/github';
 
 export type AppPageProps = {
   error: undefined | Error;
@@ -73,7 +72,8 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         /* TODO change this */
         h1,
         p {
-          ${darkModeEnabled ? 'text-shadow: 1px 1px 3px #00000099;' : ''}
+          text-shadow: ${darkModeEnabled ? '1px 1px 3px #00000099' : 'none'};
+          transition: text-shadow 0.4s ease;
         }
       `}</style>
       <style jsx global>{`

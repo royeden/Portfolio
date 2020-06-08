@@ -1,7 +1,8 @@
 // THANK YOU https://usehooks.com/useMedia/ <3
 // Adapted to NextJS
-import useBrowser from './useBrowser';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+
+import useBrowser from './useBrowser';
 
 type MediaQuery = {
   matches: unknown;
