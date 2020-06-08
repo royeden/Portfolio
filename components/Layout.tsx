@@ -36,9 +36,9 @@ function Layout({
           <ActiveLink className="page__nav__link" href="/projects">
             Projects
           </ActiveLink>
-          <ActiveLink className="page__nav__link" href="/blog">
-            Blogs
-          </ActiveLink>
+          {/* <ActiveLink className="page__nav__link" href="/blog">
+            Blog
+          </ActiveLink> */}
           <button
             aria-label={`Toggle ${darkModeEnabled ? 'Light' : 'Dark'} mode`}
             className="page__nav__toggle-dark-mode-button"
@@ -160,6 +160,11 @@ function Layout({
         }
 
         @media (max-width: 600px) {
+          .page__nav {
+            justify-content: space-around;
+            padding: 0.75rem 0.5rem;
+          }
+
           .page__nav > :global(.page__nav__link) {
             font-size: 0.8rem;
             margin: 0;
