@@ -71,21 +71,67 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         }
         /* TODO change this */
         h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        span,
         p {
           text-shadow: ${darkModeEnabled ? '1px 1px 3px #00000099' : 'none'};
           transition: text-shadow 0.4s ease;
         }
       `}</style>
       <style jsx global>{`
+        /* poppins-300 - latin */
+        @font-face {
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 300;
+          src: local('Poppins Light'), local('Poppins-Light'),
+            url('public/Poppins/poppins-v9-latin-300.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+              url('public/Poppins/poppins-v9-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        /* poppins-regular - latin */
+        @font-face {
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Poppins Regular'), local('Poppins-Regular'),
+            url('public/Poppins/poppins-v9-latin-regular.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+              url('public/Poppins/poppins-v9-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        /* poppins-600 - latin */
+        @font-face {
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 600;
+          src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
+            url('public/Poppins/poppins-v9-latin-600.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+              url('public/Poppins/poppins-v9-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        /* poppins-800 - latin */
+        @font-face {
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 800;
+          src: local('Poppins ExtraBold'), local('Poppins-ExtraBold'),
+            url('public/Poppins/poppins-v9-latin-800.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+              url('public/Poppins/poppins-v9-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
         html,
         body {
           background-color: var(--background);
           color: var(--color);
           padding: 0;
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
+          font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
           transition: background-color 0.4s ease, color 0.4s ease;
         }
 
