@@ -65,7 +65,8 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           --card-hover: ${darkModeEnabled ? '#292929' : '#fcfcfc'};
           --card-focus: ${darkModeEnabled ? '#292929' : '#fcfcfc'};
           --color: ${darkModeEnabled ? '#ffffff' : '#000000'};
-          --link: ${darkModeEnabled ? '#0CBABA' : '#0070f3'};
+          --link: ${darkModeEnabled ? '#0cbaba' : '#0070f3'};
+          --link-hover: ${darkModeEnabled ? '#2cf2f2' : '#0056b8'};
           --nav: ${darkModeEnabled ? '#212121' : '#000000'};
           --nav-shadow: ${darkModeEnabled ? '#21212144' : '#00000044'};
         }
