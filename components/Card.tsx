@@ -1,9 +1,9 @@
 import React, { ReactNode, useMemo } from 'react';
 import Link, { LinkProps } from 'next/link';
+import wrapClassName from '@utils/wrapClassName';
 
 import ExternalLink from './ExternalLink';
 import Loading, { LoadingProps, isLoading } from './Loading';
-import wrapClassName from '../utils/wrapClassName';
 
 type CardBodyProps = {
   children: ReactNode;
@@ -58,7 +58,7 @@ function CardBody({
           text-align: left;
           text-decoration: none;
           transition: background-color 0.4s ease, border-color 0.4s ease,
-            box-shadow 0.4s ease, color 0.15s ease;
+            box-shadow 0.4s ease, color 0.4s ease;
         }
         .card:focus,
         :global(.link__card):focus,
