@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
-
-import wrapClassName from '../utils/wrapClassName';
+import wrapClassName from '@utils/wrapClassName';
 
 type ExternalLinkProps = {
   children: ReactNode;
@@ -28,6 +27,12 @@ function ExternalLink({
           color: var(--link);
           font-weight: bold;
           text-decoration: none;
+          transition: background-color 0.4s ease, border-color 0.4s ease,
+            box-shadow 0.4s ease, color 0.4s ease;
+        }
+        .link:focus,
+        .link:hover {
+          color: var(--link-hover);
         }
       `}</style>
     </a>
