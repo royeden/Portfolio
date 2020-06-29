@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import GoogleFonts from 'next-google-fonts';
 
 import Blobs from './Blobs';
 import ExternalLink from './ExternalLink';
@@ -18,6 +19,8 @@ function Layout({
 }: LayoutType): JSX.Element {
   return (
     <>
+      <GoogleFonts href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" />
+      <HeadData />
       <div className="page">
         <Blobs color={darkModeEnabled ? '#cccccc' : '#bbbbbb'} />
         <Wave height="4rem" width="100%" type="top" />
@@ -33,7 +36,6 @@ function Layout({
             />
           </button>
         </nav>
-        <HeadData />
         <main className="page__main">{children}</main>
         <Wave height="4rem" width="100%" type="bottom" />
         <footer className="page__footer">

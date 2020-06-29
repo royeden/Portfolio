@@ -17,6 +17,7 @@
     "hast-util-sanitize": "^2.0.2",
     "link-preview-js": "^2.0.1",
     "next": "^9.4.4",
+    "next-google-fonts": "^1.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "rehype-autolink-headings": "^3.0.0",

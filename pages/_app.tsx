@@ -84,50 +84,6 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         }
       `}</style>
       <style jsx global>{`
-        /* poppins-300 - latin */
-        @font-face {
-          font-family: 'Poppins';
-          font-style: normal;
-          font-weight: 300;
-          src: local('Poppins Light'), local('Poppins-Light'),
-            url('public/Poppins/poppins-v9-latin-300.woff2') format('woff2'),
-            /* Chrome 26+, Opera 23+, Firefox 39+ */
-              url('public/Poppins/poppins-v9-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-          font-display: swap;
-        }
-        /* poppins-regular - latin */
-        @font-face {
-          font-family: 'Poppins';
-          font-style: normal;
-          font-weight: 400;
-          src: local('Poppins Regular'), local('Poppins-Regular'),
-            url('public/Poppins/poppins-v9-latin-regular.woff2') format('woff2'),
-            /* Chrome 26+, Opera 23+, Firefox 39+ */
-              url('public/Poppins/poppins-v9-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-          font-display: swap;
-        }
-        /* poppins-600 - latin */
-        @font-face {
-          font-family: 'Poppins';
-          font-style: normal;
-          font-weight: 600;
-          src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
-            url('public/Poppins/poppins-v9-latin-600.woff2') format('woff2'),
-            /* Chrome 26+, Opera 23+, Firefox 39+ */
-              url('public/Poppins/poppins-v9-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-          font-display: swap;
-        }
-        /* poppins-800 - latin */
-        @font-face {
-          font-family: 'Poppins';
-          font-style: normal;
-          font-weight: 800;
-          src: local('Poppins ExtraBold'), local('Poppins-ExtraBold'),
-            url('public/Poppins/poppins-v9-latin-800.woff2') format('woff2'),
-            /* Chrome 26+, Opera 23+, Firefox 39+ */
-              url('public/Poppins/poppins-v9-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-          font-display: swap;
-        }
         html,
         body {
           background-color: var(--background);
