@@ -107,7 +107,6 @@ function Layout({
           box-shadow: 0 1px 2px 2px var(--nav-shadow);
           display: flex;
           height: 4rem;
-          /* justify-content: center; */
           justify-content: flex-end;
           padding: 0.75rem 2rem;
           position: fixed;
