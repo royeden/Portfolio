@@ -62,6 +62,15 @@ function Layout({
         @keyframes appear {
           from {
             opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes appearDown {
+          from {
+            opacity: 0;
             transform: translateY(5%);
           }
           to {
@@ -70,15 +79,8 @@ function Layout({
           }
         }
 
-        .page__main {
-          animation: appear 0.4s ease;
-          flex: 1;
-          margin-bottom: 2rem;
-          padding: 1rem 0.75rem;
-          z-index: 1;
-        }
-
         .page {
+          animation: appear 0.4s ease;
           align-items: center;
           display: flex;
           flex-direction: column;
@@ -89,6 +91,14 @@ function Layout({
           position: relative;
           width: 100vw;
           z-index: 0;
+        }
+
+        .page__main {
+          animation: appearDown 0.4s ease;
+          flex: 1;
+          margin-bottom: 2rem;
+          padding: 1rem 0.75rem;
+          z-index: 1;
         }
 
         .page__nav {
