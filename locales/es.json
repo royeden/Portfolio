@@ -1,0 +1,43 @@
+{
+  "common": {
+    "en": "Inglés",
+    "es": "Español",
+    "dark": "oscuro",
+    "light": "claro"
+  },
+  "home": {
+    "welcome": "¡Hola, bienvenidx!",
+    "bio":{
+      "pic": "Un dibujo de mí que hizo una amiga",
+      "extract": {
+        "intro": "¡Soy Roy!",
+        "programmer": "A veces programo Front-End",
+        "arts": "A veces hago artes audiovisuales",
+        "learning": "A veces ando aprendiendo cosas nuevas",
+        "teaching": "A veces ando compartiendo mis aprendizajes"
+      }
+    },
+    "siteUnderConstruction": "Este sitio todavía está en construcción",
+    "projects": {
+      "current": "Actualmente estoy trabajando en esto:",
+      "currentLink": "Ver el último proyecto en el que estuve trabajando: {{ name }}",
+      "checkItOut": "Lo podés ver haciendo click acá",
+      "errorLoading": "¡Esto no se cargó correctamente, disculpas!",
+      "showcase1": "Por ahora no tengo un showcase, pero podes ir a mi perfil en Github",
+      "showcase2": "para ver todos los proyectos que hice por ahora",
+      "shocaseLink": "Ver mis proyectos en Github"
+    },
+    "viewSiteIn": "Ver sitio en {{ language }}"
+  },
+  "emoji": {},
+  "layout": {
+    "header": {
+      "toggleMode": "Cambiar a modo {{ mode }}",
+      "currentMode": "modo {{ mode }}"
+    },
+    "footer": {
+      "madeWith": "Hecho con",
+      "by": "por"
+    }
+  }
+}

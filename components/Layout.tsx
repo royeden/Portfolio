@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import GoogleFonts from 'next-google-fonts';
+import useTranslation from '@hooks/useTranslation';
 
 import Blobs from './Blobs';
 import ExternalLink from './ExternalLink';
@@ -17,6 +18,7 @@ function Layout({
   darkModeEnabled,
   toggleDarkModeEnabled
 }: LayoutType): JSX.Element {
+  const { t } = useTranslation();
   return (
     <>
       <GoogleFonts href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" />
@@ -26,13 +28,17 @@ function Layout({
         <Wave height="4rem" width="100%" type="top" />
         <nav className="page__nav">
           <button
-            aria-label={`Toggle ${darkModeEnabled ? 'Light' : 'Dark'} mode`}
+            aria-label={t('layout.header.toggleMode', {
+              mode: darkModeEnabled ? t('common.light') : t('common.dark')
+            })}
             className="page__nav__toggle-dark-mode-button"
             onClick={toggleDarkModeEnabled}
           >
             <img
               src={`/${darkModeEnabled ? 'dark' : 'light'}_mode.svg`}
-              alt={`${darkModeEnabled ? 'Light' : 'Dark'} mode enabled`}
+              alt={t('layout.header.currentMode', {
+                mode: !darkModeEnabled ? t('common.light') : t('common.dark')
+              })}
             />
           </button>
         </nav>
@@ -40,11 +46,11 @@ function Layout({
         <Wave height="4rem" width="100%" type="bottom" />
         <footer className="page__footer">
           <p>
-            Made with{' '}
+            {t('layout.footer.madeWith')}{' '}
             <span aria-label="love" role="img">
               ❤️
             </span>{' '}
-            by{' '}
+            {t('layout.footer.by')}{' '}
             <ExternalLink href="https://github.com/royeden">
               Roy Eden
             </ExternalLink>

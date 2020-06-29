@@ -14,7 +14,9 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'import/no-unresolved': [
       'error',
-      { ignore: ['@components/*', '@hooks/*', '@utils/*', '@public/*'] }
+      {
+        ignore: ['@components/*', '@hooks/*', '@lib/*', '@utils/*', '@public/*']
+      }
     ]
   },
   settings: {

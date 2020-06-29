@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import wrapClassName from '@utils/wrapClassName';
 
+import Anchor from './Anchor';
+
 type ExternalLinkProps = {
   children: ReactNode;
   className?: string;
@@ -14,7 +16,7 @@ function ExternalLink({
   ...props
 }: ExternalLinkProps): JSX.Element {
   return (
-    <a
+    <Anchor
       {...props}
       href={href}
       className={wrapClassName('link', className)}
@@ -22,20 +24,7 @@ function ExternalLink({
       rel="noopener noreferrer"
     >
       {children}
-      <style jsx>{`
-        .link {
-          color: var(--link);
-          font-weight: bold;
-          text-decoration: none;
-          transition: background-color 0.4s ease, border-color 0.4s ease,
-            box-shadow 0.4s ease, color 0.4s ease;
-        }
-        .link:focus,
-        .link:hover {
-          color: var(--link-hover);
-        }
-      `}</style>
-    </a>
+    </Anchor>
   );
 }
 

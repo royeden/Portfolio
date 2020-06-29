@@ -26,6 +26,7 @@
     "rehype-stringify": "^7.0.0",
     "remark-parse": "^8.0.2",
     "remark-rehype": "^6.0.0",
+    "rosetta": "^1.0.1",
     "swr": "^0.2.0",
     "typescript": "^3.8.3",
     "unified": "^9.0.0"

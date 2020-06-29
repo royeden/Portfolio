@@ -10,6 +10,7 @@ import {
   filterUnwantedRepos,
   sortReposByUpdateDate
 } from '@utils/github';
+import I18n from '@lib/i18n';
 
 export type AppPageProps = {
   error: undefined | Error;
@@ -43,19 +44,22 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
   }, [data]);
 
   return (
-    <Layout
-      darkModeEnabled={initialized && darkModeEnabled}
-      toggleDarkModeEnabled={toggleDarkModeEnabled}
-    >
-      <Component
-        error={error}
-        darkModeEnabled={darkModeEnabled}
-        toggleDarkModeEnabled={toggleDarkModeEnabled}
-        loading={!data}
-        githubRepos={githubRepos}
-        {...pageProps}
-      />
-
+    <>
+      <I18n lngDict={pageProps.lngDict} locale={pageProps.lng}>
+        <Layout
+          darkModeEnabled={initialized && darkModeEnabled}
+          toggleDarkModeEnabled={toggleDarkModeEnabled}
+        >
+          <Component
+            error={error}
+            darkModeEnabled={darkModeEnabled}
+            toggleDarkModeEnabled={toggleDarkModeEnabled}
+            loading={!data}
+            githubRepos={githubRepos}
+            {...pageProps}
+          />
+        </Layout>
+      </I18n>
       <style jsx global>{`
         :root {
           --background: ${darkModeEnabled ? '#121212' : '#ffffff'};
@@ -100,7 +104,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           box-sizing: border-box;
         }
       `}</style>
-    </Layout>
+    </>
   );
 }
 

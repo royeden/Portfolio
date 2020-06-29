@@ -1,0 +1,43 @@
+{
+  "common": {
+    "en": "English",
+    "es": "Spanish",
+    "dark": "dark",
+    "light": "light"
+  },
+  "home": {
+    "welcome": "Hi, welcome!",
+    "bio": {
+      "pic": "A drawing of me made by a friend",
+      "extract": {
+        "intro": "I'm Roy!",
+        "programmer": "Sometimes Front-End Programmer",
+        "arts": "Sometimes doing audiovisual arts",
+        "learning": "Sometimes learning about something new",
+        "teaching": "Sometimes sharing some knowledge"
+      }
+    },
+    "siteUnderConstruction": "This site is still under construction",
+    "projects": {
+      "current": "I'm currently working on this:",
+      "currentLink": "View the Github page last project that I've been working on: {{ name }}",
+      "checkItOut": "Check it out by clicking here",
+      "errorLoading": "This couldn't load, I'm sorry!",
+      "showcase1": "For now I don't have a showcase, but you can check my github to",
+      "showcase2": "view all my projects",
+      "shocaseLink": "View my projects in Github"
+    },
+    "viewSiteIn": "View site in {{ language }}"
+  },
+  "emoji": {},
+  "layout": {
+    "header": {
+      "toggleMode": "Toggle {{ mode }} mode",
+      "currentMode": "{{ mode }} mode enabled"
+    },
+    "footer": {
+      "madeWith": "Made with",
+      "by": "by"
+    }
+  }
+}

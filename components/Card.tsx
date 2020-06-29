@@ -2,6 +2,7 @@ import React, { ReactNode, useMemo } from 'react';
 import Link, { LinkProps } from 'next/link';
 import wrapClassName from '@utils/wrapClassName';
 
+import Anchor from './Anchor';
 import ExternalLink from './ExternalLink';
 import Loading, { LoadingProps, isLoading } from './Loading';
 
@@ -10,6 +11,7 @@ type CardBodyProps = {
   className?: string;
   link?: LinkProps;
   href?: string;
+  [key: string]: unknown;
 };
 
 function CardBody({
@@ -34,8 +36,8 @@ function CardBody({
           {children}
         </ExternalLink>
       ) : link ? (
-        <Link {...link}>
-          <a {...cardProps}>{children}</a>
+        <Link {...link} passHref>
+          <Anchor {...cardProps}>{children}</Anchor>
         </Link>
       ) : (
         <div {...cardProps}>{children}</div>
@@ -48,11 +50,13 @@ function CardBody({
           border-radius: 10px;
           box-shadow: 0 1px 1px #00000033;
           color: var(--color);
+          cursor: ${href || link ? 'pointer' : 'auto'};
           display: flex;
           flex-direction: column;
           flex-basis: 45%;
           margin: 1rem;
           max-height: 20rem;
+          outline: none;
           overflow: hidden;
           padding: 1.5rem;
           text-align: left;
