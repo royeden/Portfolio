@@ -1,7 +1,6 @@
-import React from 'react';
 import Head from 'next/head';
 
-function HeadData(): JSX.Element {
+export function HeadData(): JSX.Element {
   return (
     <Head>
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
@@ -65,5 +64,3 @@ function HeadData(): JSX.Element {
     </Head>
   );
 }
-
-export default HeadData;

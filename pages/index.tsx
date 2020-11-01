@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
+import Image from 'next/image';
 
-import Card from '@components/Card';
-import ExternalLink from '@components/ExternalLink';
-import PageHeader from '@components/PageHeader';
+import { Card } from '@components/Card';
+import { ExternalLink } from '@components/ExternalLink';
+import { PageHeader } from '@components/PageHeader';
 import { GithubRepo } from '@utils/github';
 
 import { AppPageProps } from './_app';
@@ -17,11 +18,14 @@ function Home({ loading, githubRepos }: AppPageProps): JSX.Element {
       <PageHeader page="Home" title="Hi, welcome!" />
       <section>
         <Card className="bio">
-          <img
-            alt="A drawing of me made by a friend"
-            className="bio__pic"
-            src="/me.jpeg"
-          />
+          <div className="bio__pic">
+            <Image
+              height="140"
+              width="140"
+              alt="A drawing of me made by a friend"
+              src="/me.jpeg"
+            />
+          </div>
           <div className="bio__extract">
             <p>
               I'm Roy!{' '}
@@ -151,6 +155,7 @@ function Home({ loading, githubRepos }: AppPageProps): JSX.Element {
         .bio__pic {
           border: solid 2px black;
           border-radius: 50%;
+          overflow: hidden;
           height: 100px;
           width: 100px;
         }

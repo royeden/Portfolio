@@ -1,5 +1,3 @@
-import React from 'react';
-
 type WaveProps = {
   color?: string;
   height: string | number;
@@ -7,7 +5,7 @@ type WaveProps = {
   width: string | number;
 };
 
-function Wave({
+export function Wave({
   color = 'var(--nav)',
   height,
   type,
@@ -59,5 +57,3 @@ function Wave({
     </>
   );
 }
-
-export default Wave;

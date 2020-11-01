@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import wrapClassName from '../utils/wrapClassName';
 
@@ -8,7 +8,11 @@ type GridProps = {
   width?: number;
 };
 
-function Grid({ children, className, width = 800 }: GridProps): JSX.Element {
+export function Grid({
+  children,
+  className,
+  width = 800
+}: GridProps): JSX.Element {
   return (
     <>
       <div
@@ -35,5 +39,3 @@ function Grid({ children, className, width = 800 }: GridProps): JSX.Element {
     </>
   );
 }
-
-export default Grid;

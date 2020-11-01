@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import wrapClassName from '@utils/wrapClassName';
 
 type ExternalLinkProps = {
@@ -7,7 +7,7 @@ type ExternalLinkProps = {
   href: string;
 };
 
-function ExternalLink({
+export function ExternalLink({
   children,
   className,
   href,
@@ -38,5 +38,3 @@ function ExternalLink({
     </a>
   );
 }
-
-export default ExternalLink;

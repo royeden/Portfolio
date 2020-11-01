@@ -1,6 +1,4 @@
-import React from 'react';
-
-import Card from './Card';
+import { Card } from './Card';
 import { LoadingProps, isLoading } from './Loading';
 
 export type ProjectProps =
@@ -12,7 +10,7 @@ export type ProjectProps =
       html_url: string;
     };
 
-function Project(props: ProjectProps): JSX.Element {
+export function Project(props: ProjectProps): JSX.Element {
   return isLoading(props) ? (
     <Card {...props} />
   ) : (
@@ -42,5 +40,3 @@ function Project(props: ProjectProps): JSX.Element {
     </Card>
   );
 }
-
-export default Project;

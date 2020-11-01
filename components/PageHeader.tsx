@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Head from 'next/head';
 
 type PageHeaderProps = {
@@ -6,7 +6,7 @@ type PageHeaderProps = {
   title: ReactNode | string;
 };
 
-function PageHeader({ page, title }: PageHeaderProps): JSX.Element {
+export function PageHeader({ page, title }: PageHeaderProps): JSX.Element {
   return (
     <>
       <Head>
@@ -31,5 +31,3 @@ function PageHeader({ page, title }: PageHeaderProps): JSX.Element {
     </>
   );
 }
-
-export default PageHeader;

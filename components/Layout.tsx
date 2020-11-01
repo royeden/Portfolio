@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import GoogleFonts from 'next-google-fonts';
 
-import Blobs from './Blobs';
-import ExternalLink from './ExternalLink';
-import HeadData from './HeadData';
-import Wave from './Wave';
+import { Blobs } from './Blobs';
+import { ExternalLink } from './ExternalLink';
+import { HeadData } from './HeadData';
+import { Wave } from './Wave';
 
 type LayoutType = {
   children: ReactNode;
@@ -12,7 +12,7 @@ type LayoutType = {
   toggleDarkModeEnabled: () => void;
 };
 
-function Layout({
+export function Layout({
   children,
   darkModeEnabled,
   toggleDarkModeEnabled
@@ -162,5 +162,3 @@ function Layout({
     </>
   );
 }
-
-export default Layout;

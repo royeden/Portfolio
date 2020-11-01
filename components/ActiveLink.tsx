@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -7,7 +7,7 @@ type ActiveLinkProps = LinkProps & {
   className: string;
 };
 
-function ActiveLink({
+export function ActiveLink({
   children,
   className,
   href,
@@ -31,5 +31,3 @@ function ActiveLink({
     </Link>
   );
 }
-
-export default ActiveLink;

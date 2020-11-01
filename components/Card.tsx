@@ -1,9 +1,9 @@
-import React, { ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import Link, { LinkProps } from 'next/link';
 import wrapClassName from '@utils/wrapClassName';
 
-import ExternalLink from './ExternalLink';
-import Loading, { LoadingProps, isLoading } from './Loading';
+import { ExternalLink } from './ExternalLink';
+import { Loading, LoadingProps, isLoading } from './Loading';
 
 type CardBodyProps = {
   children: ReactNode;
@@ -81,7 +81,7 @@ function CardBody({
 
 type CardProps = LoadingProps | CardBodyProps;
 
-function Card(props: CardProps): JSX.Element {
+export function Card(props: CardProps): JSX.Element {
   return isLoading(props) ? (
     <CardBody className="loading">
       <Loading />
@@ -97,5 +97,3 @@ function Card(props: CardProps): JSX.Element {
     <CardBody {...props} />
   );
 }
-
-export default Card;

@@ -1,7 +1,5 @@
-import React from 'react';
-
-import Project, { ProjectProps } from './Project';
-import Grid from './Grid';
+import { Project, ProjectProps } from './Project';
+import { Grid } from './Grid';
 import { isLoading } from './Loading';
 
 type ProjectsDisplayProps = {
@@ -9,7 +7,7 @@ type ProjectsDisplayProps = {
   projects: ProjectProps[];
 };
 
-function ProjectsDisplay({
+export function ProjectsDisplay({
   current,
   projects
 }: ProjectsDisplayProps): JSX.Element {
@@ -30,5 +28,3 @@ function ProjectsDisplay({
     </div>
   );
 }
-
-export default ProjectsDisplay;

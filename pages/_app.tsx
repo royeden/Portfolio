@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import { AppProps } from 'next/app';
 import { useEffect, useMemo } from 'react';
 
-import Layout from '@components/Layout';
+import { Layout } from '@components/Layout';
 import useDarkMode from '@hooks/useDarkMode';
 import useToggle from '@hooks/useToggle';
 import {

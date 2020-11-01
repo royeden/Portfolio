@@ -1,5 +1,3 @@
-import React from 'react';
-
 export type LoadingProps = {
   loading: true;
 };
@@ -8,7 +6,7 @@ export function isLoading(props: LoadingProps | object): props is LoadingProps {
   return (props as LoadingProps).loading === true;
 }
 
-function Loading(): JSX.Element {
+export function Loading(): JSX.Element {
   return (
     <>
       <div className="loading">
@@ -58,5 +56,3 @@ function Loading(): JSX.Element {
     </>
   );
 }
-
-export default Loading;
