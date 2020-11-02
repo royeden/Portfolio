@@ -9,15 +9,15 @@
     "lint": "eslint --ext .js,.ts,.jsx,.tsx --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@types/node": "^13.13.0",
-    "@types/react": "^16.9.34",
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.55",
     "@types/unist": "^2.0.3",
     "deepmerge": "^4.2.2",
     "gray-matter": "^4.0.2",
     "hast-util-sanitize": "^2.0.2",
-    "link-preview-js": "^2.0.1",
+    "link-preview-js": "^2.0.5",
     "next": "^10.0.0",
-    "next-google-fonts": "^1.1.0",
+    "next-google-fonts": "^1.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rehype-autolink-headings": "^3.0.0",
@@ -26,7 +26,7 @@
     "rehype-stringify": "^7.0.0",
     "remark-parse": "^8.0.2",
     "remark-rehype": "^6.0.0",
-    "swr": "^0.2.0",
+    "swr": "^0.3.8",
     "typescript": "^3.8.3",
     "unified": "^9.0.0"
   },
