@@ -3,13 +3,13 @@ import { getLinkPreview } from 'link-preview-js';
 
 import { GithubRepo } from './github';
 
-type WebsitePartial = {
+export type WebsitePartial = {
   url: string;
   mediaType: string;
   contentType: string;
   favicons: any[];
 };
-type WebsiteComplete = {
+export type WebsiteComplete = {
   url: string;
   title: any;
   siteName: any;
@@ -76,11 +76,6 @@ export async function getWebsites(
       function getSafeResponse(): JSONSafeWebsite {
         if (isWebsiteComplete(response)) {
           return {
-            title: response.title || '',
-            siteName: response.siteName || '',
-            description: response.description || '',
-            mediaType: response.mediaType || '',
-            favicons: response.favicons || [],
             ...response
           };
         } else {
