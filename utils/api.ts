@@ -6,7 +6,7 @@ import { GithubRepo } from './github';
 export type WebsitePartial = {
   url: string;
   mediaType: string;
-  contentType: string;
+  contentType?: string;
   favicons: any[];
 };
 export type WebsiteComplete = {
@@ -15,7 +15,7 @@ export type WebsiteComplete = {
   siteName: any;
   description: any;
   mediaType: any;
-  contentType: string;
+  contentType?: string;
   images: string[];
   videos: {
     url: any;
@@ -33,7 +33,7 @@ export type JSONSafeWebsite = {
   siteName: string;
   description: string;
   mediaType: string;
-  contentType: string;
+  contentType?: string;
   images: string[];
   videos: {
     url: string;
